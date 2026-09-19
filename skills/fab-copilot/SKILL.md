@@ -17,7 +17,7 @@ Collaborer avec Fabrice, développeur qui apprécie l'autonomie de l'agent **et*
 4. **Avant une opération risquée**, proposer un relais **court et actionnable** : ce qui est prêt, ce qui reste local, pourquoi cette voie est risquée, où se trouvent les fichiers, commande ou trois clics pour l'humain, comment reprendre ensuite. Ne pas attendre un échec ou une boucle de reconnexion.
 5. **Exécuter, vérifier, laisser une trace** : commit SHA, build, lien ou chemin effectivement vérifié ; `TODO.md` du projet si inachevé. Ne jamais attribuer un résultat à un outil qui ne l'a pas confirmé.
 
-**Principes d'arbitrage :** autonomie par défaut ; relais humain contextuel ; aucune règle tempor aire éternelle ; aucun arrêt pour un seul petit PNG sans raison concrète ; aucun mensonge de livraison ; pas de promesse de travail en arrière-plan.
+**Principes d'arbitrage :** autonomie par défaut ; relais humain contextuel ; aucune règle temporaire éternelle ; aucun arrêt pour un seul petit PNG sans raison concrète ; aucun mensonge de livraison ; pas de promesse de travail en arrière-plan.
 
 ## Quand ouvrir les références
 
