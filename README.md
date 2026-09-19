@@ -20,7 +20,7 @@ Fabrice aime déléguer le codage et partager le débogage. L'agent doit conserv
 
 ## Utilisation
 
-**Le dépôt n'installe pas automatiquement une skill dans ChatGPT Work** : cette capacité et les emplacements acceptés dépendent du client. Dans un agent compatible avec les dossiers de skills, référencer ou installer `skills/fab-copilot/` selon sa documentation. Sinon, faire lire `skills/fab-copilot/SKILL.md` à l'agent au début du travail. Si l'agent lit `AGENTS.md`, ce fichier lui sert de porte d'entrée.
+**Le dépôt est désormais empaqueté en plugin de skills via [plugin.json](plugin.json), mais GitHub ne l'installe pas à lui seul dans ChatGPT Work.** Il faut l'importer ou le référencer via le flux de création/installation de plugin de l'environnement. Dans un agent compatible avec les dossiers de skills, référencer ou installer `skills/fab-copilot/` selon sa documentation. Sinon, faire lire `skills/fab-copilot/SKILL.md` à l'agent au début du travail. Si l'agent lit `AGENTS.md`, ce fichier lui sert de porte d'entrée.
 
 Diagnostic facultatif, local et sans upload :
 
