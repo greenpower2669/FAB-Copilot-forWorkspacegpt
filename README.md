@@ -1,2 +1,38 @@
-# FAB-Copilot-forWorkspacegpt
-Aide à programmer pour gpt worj space
+# FAB Copilot — collaboration légère (v0.1)
+
+Un **profil de développement pour agents** inspiré du format de skills utilisé notamment par [Superpowers](https://github.com/obra/superpowers), mais **sans sa chaîne de procédures obligatoire**.
+
+## Pourquoi
+
+Fabrice aime déléguer le codage et partager le débogage. L'agent doit conserver son initiative, sans fabriquer des étapes inutiles, tout en sachant **passer la main avant** une opération manifestement plus facile ou fiable à faire par l'humain. Exemple historique : envoyer beaucoup de PNG via une API JSON qui impose le Base64 peut gonfler les transferts et compliquer une reprise. **Ce n'est pas une interdiction du Base64** : si le transfert est petit, ou si une autre API transporte le binaire, la décision change.
+
+> Règle fondamentale : comprendre *pourquoi* une règle existe, vérifier si elle s'applique au contexte réel, puis choisir la stratégie la plus simple et vérifiable.
+
+## Fichiers
+
+- [Skill](skills/fab-copilot/SKILL.md) : activation et boucle décisionnelle.
+- [Conventions](skills/fab-copilot/references/conventions.md) : nommage, APK/AAB, icônes, architecture, stabilité, accessibilité.
+- [Transferts](skills/fab-copilot/references/transferts.md) : choix de transport et relais humain **avant** upload risqué.
+- [AGENTS.md](AGENTS.md) : point d'entrée pour assistants lisant les consignes du dépôt.
+- [Configuration exemple](fab-copilot.example.json) : préférences et seuils ajustables, jamais une vérité absolue.
+- [Asset Gate](scripts/asset_gate.py) : diagnostic local facultatif, sans charger les octets des fichiers.
+- [Tests](tests/test_asset_gate.py) et [TODO](TODO.md).
+
+## Utilisation
+
+**Le dépôt n'installe pas automatiquement une skill dans ChatGPT Work** : cette capacité et les emplacements acceptés dépendent du client. Dans un agent compatible avec les dossiers de skills, référencer ou installer `skills/fab-copilot/` selon sa documentation. Sinon, faire lire `skills/fab-copilot/SKILL.md` à l'agent au début du travail. Si l'agent lit `AGENTS.md`, ce fichier lui sert de porte d'entrée.
+
+Diagnostic facultatif, local et sans upload :
+
+```bash
+python scripts/asset_gate.py ./assets --transport json-base64
+python -m unittest discover -s tests -v
+```
+
+Le diagnostic émet seulement chemins, nombres et tailles : ni image, ni contenu, ni chaîne Base64.
+
+## Évolution
+
+Motivations stables ; règles conditionnelles et seuils contextuels. Les mesures temporaires se retirent dès que leur cause ne s'applique plus. Aucune annonce de livraison sans preuve de commit/release et de builds réellement disponibles.
+
+Licence MIT pour le code original ici. Superpowers est distinct, cité comme inspiration, pas embarqué.
