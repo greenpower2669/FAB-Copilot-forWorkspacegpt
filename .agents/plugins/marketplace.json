@@ -1,0 +1,21 @@
+{
+  "name": "fab-personal",
+  "interface": {
+    "displayName": "FAB — Marketplace personnelle"
+  },
+  "plugins": [
+    {
+      "name": "fab-copilot",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/greenpower2669/FAB-Copilot-forWorkspacegpt.git",
+        "ref": "main"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
