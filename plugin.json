@@ -1,0 +1,15 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "fab-copilot",
+  "version": "0.1.0",
+  "description": "Collaboration de développement légère : autonomie, prévention des transferts fragiles, relais humain contextuel, conventions APK/AAB et continuité Git.",
+  "repository": "https://github.com/greenpower2669/FAB-Copilot-forWorkspacegpt",
+  "license": "MIT",
+  "keywords": [
+    "development",
+    "collaboration",
+    "android",
+    "git",
+    "skills"
+  ]
+}
