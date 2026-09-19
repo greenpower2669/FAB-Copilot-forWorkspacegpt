@@ -9,6 +9,12 @@
 - [x] Continuité : préserver stable, `TODO.md` dans chaque dépôt travaillé, vérifier commits et builds.
 - [x] Diagnostic local des assets (métadonnées uniquement) et tests unitaires.
 
+## Marketplace personnelle — 2026-09-19
+- [x] Ajouter `.agents/plugins/marketplace.json` sur `main` : entrée `fab-copilot` pointant vers le plugin original à la racine du dépôt, sans dupliquer la skill ni ajouter de serveur MCP. Premier commit confirmé : `e8963826c52b3caf615b6372667241bbcb0ef10b`.
+- [x] Relire sur GitHub le catalogue, `plugin.json` et `skills/fab-copilot/SKILL.md` après publication.
+- [ ] Importer la marketplace dans ChatGPT Work (si disponible : Workspace settings > Plugins > Add > Import marketplace, source = URL du dépôt, Path vide, branche `main`), puis vérifier le rapport d'import.
+- [ ] Installer et activer `fab-copilot` dans une nouvelle session et confirmer que la skill est effectivement chargée. Le catalogue GitHub ne réalise pas l'installation à lui seul.
+
 ## À vérifier dans les environnements cibles
 - [ ] Exécuter les tests de `asset_gate.py` et vérifier une sortie réelle.
 - [ ] Tester l'import du plugin dans ChatGPT Work via `@plugin-creator`, l'installation et son activation dans une nouvelle session (GitHub seul ne l'installe pas).
