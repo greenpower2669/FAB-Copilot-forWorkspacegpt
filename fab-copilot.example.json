@@ -1,0 +1,27 @@
+{
+  "schema": "fab-copilot-preferences/v0.1",
+  "comment": "Exemple de préférences à adapter par projet ; ne constitue pas un moteur de règles ni une limite de plateforme.",
+  "collaboration": {
+    "autonomy_by_default": true,
+    "share_debugging_when_useful": true,
+    "avoid_unnecessary_interruptions": true,
+    "human_handoff_before_risky_upload": true
+  },
+  "assets": {
+    "prefer_native_binary_when_available": true,
+    "allow_small_base64_when_required": true,
+    "json_base64_advisory_single_file_kib": 256,
+    "json_base64_advisory_batch_mib": 2,
+    "json_base64_advisory_file_count": 12
+  },
+  "android": {
+    "apk_and_aab_when_requested_and_appropriate": true,
+    "project_and_version_in_artifact_name": true,
+    "app_icon": true
+  },
+  "continuity": {
+    "preserve_stable_version": true,
+    "update_project_todo_if_incomplete": true,
+    "verify_commit_and_build_before_claiming_success": true
+  }
+}
