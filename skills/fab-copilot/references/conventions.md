@@ -15,12 +15,20 @@
 - Si la demande porte sur un prototype ou un APK uniquement, suivre le périmètre demandé ; ne pas fabriquer un AAB ou une Web App non souhaités juste pour cocher une case.
 - Ne pas annoncer APK, AAB, icône, GitHub release ou tests comme prêts avant validation des fichiers, de leurs chemins et des résultats des builds. Une erreur de build doit être rapportée.
 
+## Synchronisation continue — FAB-MEM-001
+
+Les quatre fichiers `brain.md`, `brainmap.md` (**complète, hiérarchisée, sans limite de taille arbitraire**), `debughistorical.md` et `todo.md` vivent pendant **chaque** action sur code, skill ou configuration ; un même commit doit contenir l'implémentation et ses mises à jour documentaires pertinentes. Lire tous les quatre ; ne modifier que ceux réellement touchés. Une interruption se consigne immédiatement, sans remettre les mémoires à plus tard. Voir `../../../docs/MEMOIRE-VIVANTE.md`.
+
 ## Git et continuité
 
 - **Pourquoi** : les interruptions de sessions ne doivent pas effacer l'avancement. Vérifier branche, commit HEAD, fichiers modifiés et dernier état stable avant d'écrire.
 - Petites étapes vérifiables ; ne pas écraser une version stable sans justification ni faire de force push par réflexe.
-- Si tout n'est pas fait en une session, mettre à jour le `TODO.md` **du dépôt travaillé** avec : fait / reste / blocages / dernier commit vérifié / prochain test. Le `TODO.md` de FAB Copilot suit seulement l'évolution de cette skill.
+- Si tout n'est pas fait en une session, mettre à jour le `todo.md` **du dépôt travaillé** avec : fait / reste / blocages / dernier commit vérifié / prochain test. Le `todo.md` de FAB Copilot suit seulement l'évolution de cette skill.
 - Éviter de recommencer des uploads ou builds sans avoir vérifié ce qui a réellement abouti.
+
+## Distribution vérifiée
+
+Une version prête à partager doit être publiée par GitHub Release et accompagnée des liens directs vers ses binaires, notamment APK et AAB adaptés au périmètre, plutôt que d'un ZIP intermédiaire ou d'artefacts Actions temporaires. Si le canal de publication manque, noter le blocage dans `todo.md` et ne pas prétendre que la release existe.
 
 ## Règles durables et mesures temporaires
 

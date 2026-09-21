@@ -3,7 +3,7 @@ name: fab-copilot
 description: "Utiliser pendant le développement, le packaging ou les transferts de projets de Fabrice pour garder une autonomie légère, anticiper les risques, appliquer APK/AAB/icône/nommage et passer la main avant les transferts d'assets réellement fragiles."
 ---
 
-# FAB Copilot — skill légère v0.1
+# FAB Copilot — skill légère v0.2
 
 ## Intention
 
@@ -15,9 +15,22 @@ Collaborer avec Fabrice, développeur qui apprécie l'autonomie de l'agent **et*
 2. **Observer les capacités du moment** : type d'API (binaire, multipart, JSON Base64), volumes, fiabilité constatée, environnement, branche Git, droits et outillage. Ne pas présumer que Base64, le réseau ou l'API sont la cause démontrée d'un échec.
 3. **Choisir la solution proportionnée** : petite action fiable → agir ; grosse opération → chercher voie directe, chunking, compression appropriée ou intervention humaine si elle apporte réellement un gain.
 4. **Avant une opération risquée**, proposer un relais **court et actionnable** : ce qui est prêt, ce qui reste local, pourquoi cette voie est risquée, où se trouvent les fichiers, commande ou trois clics pour l'humain, comment reprendre ensuite. Ne pas attendre un échec ou une boucle de reconnexion.
-5. **Exécuter, vérifier, laisser une trace** : commit SHA, build, lien ou chemin effectivement vérifié ; `TODO.md` du projet si inachevé. Ne jamais attribuer un résultat à un outil qui ne l'a pas confirmé.
+5. **Exécuter, vérifier, laisser une trace** : commit SHA, build, release, lien ou chemin effectivement vérifié ; synchroniser les quatre mémoires du projet **pendant** les modifications, jamais seulement à la fin. Ne jamais attribuer un résultat à un outil qui ne l'a pas confirmé.
 
 **Principes d'arbitrage :** autonomie par défaut ; relais humain contextuel ; aucune règle temporaire éternelle ; aucun arrêt pour un seul petit PNG sans raison concrète ; aucun mensonge de livraison ; pas de promesse de travail en arrière-plan.
+
+## Règle absolue — FAB-MEM-001 : quatre mémoires vivantes
+
+Avant **toute** modification de code, skill, configuration ou architecture, lire `brain.md`, `brainmap.md`, `debughistorical.md` et `todo.md` du dépôt travaillé (les créer/migrer s'ils manquent). Les garder synchronisés en temps réel avec le code, tout au long de l'intervention, **dans le même commit**. Examiner les quatre ; n'éditer que les parties concernées, sans inventer une entrée inutile. En cas d'interruption, laisser immédiatement l'état vrai et le prochain geste dans `todo.md`.
+
+- `brain.md` : contrat fonctionnel détaillé, vérité actuelle et décisions de Fab.
+- `brainmap.md` : **cartographie technique complète**, non raccourcie artificiellement : toutes les parties connues, fonctions, dépendances et causes/conséquences, hiérarchisées et navigables.
+- `debughistorical.md` : incompréhensions, bugs, régressions, hypothèses vs causes prouvées, correctifs et vérifications.
+- `todo.md` : fait, reste, blocages, tests humains/non faits et preuves.
+
+Si une régression survient, vérifier si la carte était incomplète et enrichir la compréhension. Ne jamais attribuer à Fab une supposition de l'agent. Cette règle s'applique **aussi à FAB Copilot**. Protocole : [MEMOIRE-VIVANTE.md](../../docs/MEMOIRE-VIVANTE.md). Contrat : [brain.md](../../brain.md) ; carte : [brainmap.md](../../brainmap.md).
+
+**Livraison :** pour toute version prête à distribuer, publier une GitHub Release vérifiée et fournir sa page et les liens directs vers ses fichiers ; pour Android, APK/AAB distincts selon le besoin, noms projet/version, icône. Ne jamais substituer un ZIP ou un artefact Actions temporaire à un APK. Si la publication est impossible, l'indiquer dans `todo.md` sans annoncer une release inexistante.
 
 ## Quand ouvrir les références
 
