@@ -31,3 +31,7 @@ Lire les quatre fichiers et les instructions du dépôt ; identifier les exigenc
 
 ## Limites honnêtes
 La présence des fichiers ne prouve pas qu'une analyse est juste ; preuves et incertitudes doivent être tracées. L'outil facultatif `asset_gate.py` est un conseil local, non un orchestrateur de releases ni un garde-fou de commits.
+
+
+### FAB-MISSION-001 — Les commandes de Fab sont un registre autonome
+Chaque projet utilisant la skill possède à sa racine `ordres-de-mission.md`, **séparé de `todo.md`**. Ce registre conserve les demandes explicites de Fab, tous leurs détails, ID, priorité fixée par Fab, état et preuve jusqu'à livraison. Seul Fab peut annuler, fusionner, remplacer, modifier le périmètre ou reprioriser sa mission. « Code pas » ou « pour plus tard » interdit de démarrer le code, mais n'efface pas la demande. Une demande produite passe en archivage visible après preuve et validation humaine si nécessaire. Le `todo.md` contient uniquement l'exécution/les propositions de l'agent et les actions correctives courtes ; les bugs et hypothèses détaillés restent dans `debughistorical.md`. `topo.md`, facultatif, peut rester une note de navigation de l'agent. À la question « que reste-t-il ? », lire d'abord le registre des missions Fab, pas les anciennes cases historiques.

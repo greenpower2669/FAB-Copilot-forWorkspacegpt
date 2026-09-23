@@ -28,3 +28,10 @@ Chaque fiche possède ID ; date ; composant ; attente ; observation ; catégorie
 
 ## Incidents techniques applicatifs
 Aucun incident du code `asset_gate.py` n'a été identifié ni corrigé pendant cette introduction. Les anciens événements de transfert décrits dans `references/transferts.md` restent des exemples contextuels ; ne pas les requalifier en causes démontrées.
+
+
+## FAB-HIST-003 — Confusion entre ordres de mission et plan de l'agent (23/09/2026)
+- **Faits :** les demandes EASYCUT de Fab concernant cadence/résolutions/économie d'espace et GET ERR couleurs/vider/accès éditeur ont été mélangées au bug d'export après déplacement, puis une réponse a présenté un total de vieilles cases TODO comme si elles étaient ses projets. Fab a dû rappeler ses petits chantiers.
+- **Cause de méthode :** l'ancien protocole distinguait histoire des erreurs et TODO, mais ne donnait pas aux commandes utilisateur un registre canonique autonome. La suggestion intermédiaire de mettre `[FAB]` au milieu du TODO restait insuffisante.
+- **Correction demandée explicitement par Fab :** créer `ordres-de-mission.md` séparé, immuable tant que non produit sauf décision explicite de Fab ; réserver `todo.md` au plan agent et `topo.md` facultativement à l'agent. Appliquer dans la skill FAB Copilot et EASYCUT, sans changer le code Android.
+- **Limite :** changement documentaire vérifiable sur Git ; aucune preuve d'activation automatique dans un client où la skill avait déjà été installée.

@@ -184,3 +184,23 @@ flowchart TD
 - « Il manque des PNG / transfert bloque » → §5 + `transferts.md`.
 - « APK introuvable / release absente » → §7 + `conventions.md` + `todo.md`.
 - « La skill n'a pas pris en compte ma règle » → §3 + présence des mémoires et version du plugin.
+
+
+## 11 — FAB-MISSION-001 : chaîne d'origine et conservation de l'ordre utilisateur
+
+```mermaid
+flowchart TD
+  Fab[Commande explicite de Fab] --> Mission[ordres-de-mission.md : mission persistante]
+  Fab --> Brain[brain.md : formulation et critères complets]
+  Mission --> Plan[todo.md : exécution technique de l'agent]
+  Bug[Symptôme / erreur] --> Hist[debughistorical.md : faits et hypothèses]
+  Hist --> Plan
+  Agent[Idées et propositions de l'agent] --> Plan
+  Plan --> Delivery{Produit livré et vérifié ?}
+  Delivery -->|non| Mission
+  Delivery -->|oui, essai humain requis| Validate[Livré, à valider]
+  Validate -->|Fab confirme| Archive[Mission produite, archivée visiblement]
+  Delivery -->|oui, preuve suffisante| Archive
+```
+
+Fichiers sources : `skills/fab-copilot/SKILL.md` applique FAB-MISSION-001 ; `docs/MEMOIRE-VIVANTE.md` définit les transitions ; `AGENTS.md` relaie l'obligation ; `ordres-de-mission.md` est le registre utilisateur, `todo.md` le plan agent. `topo.md` facultatif ne remplace aucun fichier. Sans chargement effectif de la skill, le Git seul ne peut imposer matériellement ces règles aux agents ou mettre à jour une installation déjà importée.

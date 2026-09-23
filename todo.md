@@ -46,3 +46,10 @@
 
 Chaque nouveau contournement doit décrire **cause, condition d'application, alternative, condition de retrait**. Ne pas ajouter un protocole obligatoire à toute session.
 
+
+
+## FAB-MISSION-001 — Implémentation du registre séparé (23/09/2026)
+- [x] [AGENT] Inscrire la commande de Fab dans `ordres-de-mission.md`, distinct du plan technique `todo.md` ; maintenir les quatre mémoires synchronisées avec la skill et le protocole.
+- [x] [AGENT] Clarifier que les rapports de bug vont dans `debughistorical.md`, les correctifs/action techniques ici, et que `topo.md` est facultatif.
+- [ ] [AGENT] Confirmer l'activation de cette version de la skill dans les clients qui utilisaient la précédente ; Git `main` ne recharge pas une copie déjà installée.
+- [ ] [AGENT] Contrôler le premier projet consommateur et vérifier l'exhaustivité de ses missions utilisateur reconstruites ; ne jamais présenter des cases historiques comme des ordres de Fab.

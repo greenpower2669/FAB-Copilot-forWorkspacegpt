@@ -1,4 +1,4 @@
-# FAB Copilot — collaboration légère (v0.2)
+# FAB Copilot — collaboration légère (v0.3)
 
 Un **profil de développement pour agents** inspiré du format de skills utilisé notamment par [Superpowers](https://github.com/obra/superpowers), mais **sans sa chaîne de procédures obligatoire**.
 
@@ -7,6 +7,10 @@ Un **profil de développement pour agents** inspiré du format de skills utilis�
 Fabrice aime déléguer le codage et partager le débogage. L'agent doit conserver son initiative, sans fabriquer des étapes inutiles, tout en sachant **passer la main avant** une opération manifestement plus facile ou fiable à faire par l'humain. Exemple historique : envoyer beaucoup de PNG via une API JSON qui impose le Base64 peut gonfler les transferts et compliquer une reprise. **Ce n'est pas une interdiction du Base64** : si le transfert est petit, ou si une autre API transporte le binaire, la décision change.
 
 > Règle fondamentale : comprendre *pourquoi* une règle existe, vérifier si elle s'applique au contexte réel, puis choisir la stratégie la plus simple et vérifiable.
+
+## 📜 Les ordres de Fab ne se perdent pas
+
+[**ordres-de-mission.md**](ordres-de-mission.md) est le registre canonique des commandes explicites de Fab dans ce dépôt et, par la skill, dans tout projet consommateur. Une demande de fonctionnalité (« pour plus tard », « en todo », « code pas » compris) y reste intacte jusqu'à production, avec statut et preuve. `todo.md` contient le plan technique de l'agent, `debughistorical.md` les bugs ; `topo.md` est facultatif et peut rester à l'agent. Voir FAB-MISSION-001 dans la skill.
 
 ## 🧠 Une mémoire réellement vivante
 
@@ -17,7 +21,7 @@ Fabrice aime déléguer le codage et partager le débogage. L'agent doit conserv
 | [brain.md](brain.md) | Fonctionnement voulu, précis et vérifiable |
 | [brainmap.md](brainmap.md) | Architecture **complète**, exhaustive et hiérarchisée |
 | [debughistorical.md](debughistorical.md) | Bugs, régressions et incompréhensions, avec preuves |
-| [todo.md](todo.md) | État courant, suite, blocages et tests |
+| [todo.md](todo.md) | Plan technique de l'agent, blocages et tests ; distinct des ordres de Fab |
 
 📘 [Lire la présentation et le protocole illustré](docs/MEMOIRE-VIVANTE.md).
 
