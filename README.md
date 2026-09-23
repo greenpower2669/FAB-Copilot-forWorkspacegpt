@@ -57,3 +57,7 @@ Chaque version prête à distribuer passe par une GitHub Release vérifiée, ave
 Motivations stables ; règles conditionnelles et seuils contextuels. Les mesures temporaires se retirent dès que leur cause ne s'applique plus. Aucune annonce de livraison sans preuve de commit/release et de builds réellement disponibles.
 
 Licence MIT pour le code original ici. Superpowers est distinct, cité comme inspiration, pas embarqué.
+
+## ZIP de réinstallation — 0.3.0
+
+[**Télécharger la skill prête à importer**](https://github.com/greenpower2669/FAB-Copilot-forWorkspacegpt/raw/refs/heads/main/dist/fab-copilot-v0.3.0-skill.zip) : `SKILL.md` à la racine du ZIP, avec `references/`. Dans ChatGPT, réimporter la skill depuis le ZIP pour remplacer l'ancienne copie ; une mise à jour du dépôt Git seule ne met pas nécessairement à jour une skill déjà installée.

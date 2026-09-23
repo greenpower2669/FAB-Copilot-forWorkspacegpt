@@ -25,3 +25,8 @@
 - **Statut :** À faire / En cours / Livré, à valider / Validé, produit.
 - **Preuve de livraison et décision éventuelle de Fab :** ...
 - **Liens :** `brain.md` pour contrat exact ; `todo.md` pour l'exécution technique ; `debughistorical.md` seulement s'il y a un bug.
+
+### FAB-ZIP-001 — ZIP de la skill à réinstaller
+- **Demandeur :** Fab, 23/09/2026 : donner le ZIP de la nouvelle skill pour la réinstaller dans ChatGPT.
+- **Livraison :** `dist/fab-copilot-v0.3.0-skill.zip` extrait des sources du commit `c97e85221cf2388f44783f41e1830122dd23d222` ; téléchargement : https://github.com/greenpower2669/FAB-Copilot-forWorkspacegpt/raw/refs/heads/main/dist/fab-copilot-v0.3.0-skill.zip.
+- **Statut : Livré, à valider dans ChatGPT.** Publication Git ne prouve ni le téléchargement ni l'import de la skill par Fab.
