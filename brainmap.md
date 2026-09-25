@@ -204,3 +204,11 @@ flowchart TD
 ```
 
 Fichiers sources : `skills/fab-copilot/SKILL.md` applique FAB-MISSION-001 ; `docs/MEMOIRE-VIVANTE.md` définit les transitions ; `AGENTS.md` relaie l'obligation ; `ordres-de-mission.md` est le registre utilisateur, `todo.md` le plan agent. `topo.md` facultatif ne remplace aucun fichier. Sans chargement effectif de la skill, le Git seul ne peut imposer matériellement ces règles aux agents ou mettre à jour une installation déjà importée.
+
+## 12 — FAB-DEBUG-001 : pipeline de diagnostic progressif (25/09/2026)
+- **Point d'entrée :** `skills/fab-copilot/SKILL.md` après stagnation observée ; `AGENTS.md` relaie la règle ; `docs/MEMOIRE-VIVANTE.md` décrit sa traçabilité. Aucun outil ni coupe-circuit logiciel automatique ajouté par cette règle Markdown.
+- **Entrées :** version/commit de référence, fichier ou scénario reproductible, attendu/réel, historique des tentatives et architecture consultée dans brainmap.
+- **Boucle :** stable + scénario → hypothèse falsifiable → logs bornés par frontière/étape → désactiver ou contourner UN bloc → exécuter même scénario contre témoin → comparer → réactiver / subdiviser / confirmer → historiser et nettoyer instrumentation. Le mode historique ou parcours stable reste accessible quand une option de test est créée.
+- **Propagation :** symptôme → debughistorical (observation/hypothèse/preuve) ; choix d'isolation et dépendances → brainmap ; évolution des exigences seulement → brain ; prochain essai, blocs à restaurer et tests → todo ; ordre explicite de Fab → ordres-de-mission.
+- **Garde-fous :** drapeaux temporaires explicites, changements réversibles, originaux et sauvegardes intacts, pas de désactivation silencieuse sécurité/intégrité ; le résultat « bug absent » n'établit pas une cause sans essai de confirmation. Sur app Android, CI ≠ validation appareil. Ne pas changer plusieurs variables entre comparaisons.
+- **Limite de diffusion :** la source SKILL.md du dépôt peut changer sans que le client actualise sa copie installée ; ZIP v0.3.0 antérieur non mis à jour ici.

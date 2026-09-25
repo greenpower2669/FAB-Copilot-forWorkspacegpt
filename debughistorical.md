@@ -35,3 +35,10 @@ Aucun incident du code `asset_gate.py` n'a été identifié ni corrigé pendant 
 - **Cause de méthode :** l'ancien protocole distinguait histoire des erreurs et TODO, mais ne donnait pas aux commandes utilisateur un registre canonique autonome. La suggestion intermédiaire de mettre `[FAB]` au milieu du TODO restait insuffisante.
 - **Correction demandée explicitement par Fab :** créer `ordres-de-mission.md` séparé, immuable tant que non produit sauf décision explicite de Fab ; réserver `todo.md` au plan agent et `topo.md` facultativement à l'agent. Appliquer dans la skill FAB Copilot et EASYCUT, sans changer le code Android.
 - **Limite :** changement documentaire vérifiable sur Git ; aucune preuve d'activation automatique dans un client où la skill avait déjà été installée.
+
+## FAB-HIST-004 — Méthode de Fab pour sortir d'un débogage stagnant (25/09/2026)
+- **Catégorie :** nouvel ordre méthodologique, pas un bug de FAB Copilot prouvé.
+- **Observation / provenance :** Fab recommande des essais plus petits, davantage de reporting et la désactivation expérimentale des blocs un par un lorsque les connaissances ou les progrès sont limités.
+- **Risque visé (hypothèse générale, pas cause attribuée à EasyCut) :** enchaîner plusieurs correctifs non isolés sans savoir quel bloc contribue au symptôme et sans pouvoir distinguer correction de régression.
+- **Prévention inscrite :** FAB-DEBUG-001 dans la skill ; baseline, logs bornés, un bloc/une variable par essai, voie témoin, réversibilité, confirmation et traçabilité dans les mémoires.
+- **Preuve de réalisation :** fichier SKILL.md et les documents liés dans le commit Git de cette intervention ; pas de test d'efficacité sur une panne réelle revendiqué, ni d'activation automatique dans un client déjà installé.

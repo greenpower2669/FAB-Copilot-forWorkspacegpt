@@ -52,6 +52,12 @@ Le diagnostic émet seulement chemins, nombres et tailles : ni image, ni contenu
 
 Chaque version prête à distribuer passe par une GitHub Release vérifiée, avec lien de release et liens directs des assets utiles ; Android : APK/AAB distincts si adaptés, nom du projet, version et icône. Ne pas promettre une release quand les droits ou les binaires manquent.
 
+## 🔬 FAB-DEBUG-001 — Méthode de Fab lorsque le diagnostic stagne
+
+Si un bug résiste et que les essais ne font presque plus progresser la compréhension : revenir à la référence stable, augmenter le reporting ciblé, contourner temporairement un bloc à la fois et comparer le même scénario avant de conclure. Chaque test est réversible et documenté ; un soupçon n'est pas une preuve. La règle détaillée vit dans [la skill](skills/fab-copilot/SKILL.md).
+
+**Attention à l'installation :** la source Git contient cette méthode, mais le ZIP `dist/fab-copilot-v0.3.0-skill.zip` ci-dessous est l'ancienne archive et ne la contient pas. Une copie déjà installée dans ChatGPT ne se recharge pas par un simple commit : un ZIP actualisé doit être produit et réimporté.
+
 ## Évolution
 
 Motivations stables ; règles conditionnelles et seuils contextuels. Les mesures temporaires se retirent dès que leur cause ne s'applique plus. Aucune annonce de livraison sans preuve de commit/release et de builds réellement disponibles.

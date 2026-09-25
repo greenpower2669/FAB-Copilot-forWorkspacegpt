@@ -30,3 +30,10 @@
 - **Demandeur :** Fab, 23/09/2026 : donner le ZIP de la nouvelle skill pour la réinstaller dans ChatGPT.
 - **Livraison :** `dist/fab-copilot-v0.3.0-skill.zip` extrait des sources du commit `c97e85221cf2388f44783f41e1830122dd23d222` ; téléchargement : https://github.com/greenpower2669/FAB-Copilot-forWorkspacegpt/raw/refs/heads/main/dist/fab-copilot-v0.3.0-skill.zip.
 - **Statut : Livré, à valider dans ChatGPT.** Publication Git ne prouve ni le téléchargement ni l'import de la skill par Fab.
+
+## Mission méthodologique FAB-DEBUG-001 — Petits pas et isolation des bugs
+- **Demandeur / date :** Fab, 25/09/2026.
+- **Commande :** quand connaissances ou progrès devant un bug sont limités ou presque nuls, avancer par petits pas, augmenter le reporting, désactiver temporairement des blocs un par un afin de localiser le problème. Conserver les acquis et apprendre de chaque essai.
+- **Produit demandé :** règle conditionnelle explicite dans la skill FAB Copilot, liée aux quatre mémoires et au diagnostic réversible ; pas un changement du code EasyCut ni une désactivation permanente.
+- **Statut :** intégré aux sources Git de FAB Copilot ; activation dans une skill déjà installée et reconditionnement du ZIP à vérifier. La présence dans Git seule ne recharge pas la copie importée.
+- **Liens :** `skills/fab-copilot/SKILL.md` ; `brain.md` ; `brainmap.md` ; `todo.md`.

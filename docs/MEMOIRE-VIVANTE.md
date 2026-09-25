@@ -53,3 +53,6 @@ Une version prête à distribuer est publiée sur GitHub Releases : page de rele
 Cela ne prescrit aucun sous-agent, outil additionnel ni cérémonie par défaut. La mémoire se met à jour au rythme du travail réel. Le relais humain concerne un risque concret (transfert binaire, tests téléphone, accès indisponible), avec explication courte et reprise précise.
 
 **Référence d'exécution :** `skills/fab-copilot/SKILL.md` ; contrat détaillé : [brain.md](../brain.md) ; architecture réelle : [brainmap.md](../brainmap.md).
+
+## 6 — Débogage qui patine : FAB-DEBUG-001
+Si plusieurs tentatives n'apportent presque plus d'information, ne pas empiler les modifications. Fixer une référence reproductible, instrumenter les frontières pertinentes avec un journal borné, puis tester une désactivation/contournement **réversible d'un bloc à la fois**, avec même entrée et voie témoin. La disparition du symptôme indique une piste, pas une cause certaine : réactiver, subdiviser et vérifier. Restituer les blocs non impliqués, préserver les originaux et la sécurité, ne pas transformer un bypass de diagnostic en comportement permanent sans ordre de Fab. Noter chaque essai et sa certitude dans `debughistorical.md`, ses dépendances dans `brainmap.md` et le prochain essai dans `todo.md`. Ce protocole s'active lorsque la recherche bloque, pas à chaque correctif trivial.

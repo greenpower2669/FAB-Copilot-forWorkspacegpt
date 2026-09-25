@@ -57,3 +57,10 @@ Chaque nouveau contournement doit décrire **cause, condition d'application, alt
 ## Distribution skill ZIP — 0.3.0 (23/09/2026)
 - [x] [AGENT] Construire et enregistrer `dist/fab-copilot-v0.3.0-skill.zip` depuis la version exacte de `skills/` du commit `c97e85221cf2388f44783f41e1830122dd23d222` ; `SKILL.md` à la racine de l'archive + références complètes.
 - [ ] [AGENT] Faire confirmer l'import/remplacement dans ChatGPT par Fab ; le seul ZIP publié ne prouve pas une skill installée.
+
+## FAB-DEBUG-001 — Nouvelle méthode de Fab (25/09/2026)
+- [x] Intégrer la stratégie conditionnelle « petit pas + reporting + isolation d'un bloc à la fois » aux sources de la skill, au contrat et à la cartographie, avec garde-fous et historique distinct des bugs avérés.
+- [x] Garder le déclencheur contextuel : ne pas imposer une longue procédure à chaque petit bug, ne pas transformer une hypothèse en cause démontrée.
+- [ ] Réempaqueter une version de skill comprenant FAB-DEBUG-001 ; le ZIP v0.3.0 existant correspond à l'ancienne source. Vérifier le ZIP exact avant de proposer sa réinstallation.
+- [ ] Faire confirmer le remplacement/la recharge de la skill déjà installée par Fab ; modifier main ne met pas à jour le client.
+- [ ] Lors d'un prochain débogage bloqué, éprouver sur un même scénario la boucle reporting → neutralisation unitaire → réactivation → comparaison ; consigner les résultats réels, sans prétendre l'avoir déjà validée sur appareil.
