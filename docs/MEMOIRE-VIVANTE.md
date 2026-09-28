@@ -56,3 +56,21 @@ Cela ne prescrit aucun sous-agent, outil additionnel ni cérémonie par défaut.
 
 ## 6 — Débogage qui patine : FAB-DEBUG-001
 Si plusieurs tentatives n'apportent presque plus d'information, ne pas empiler les modifications. Fixer une référence reproductible, instrumenter les frontières pertinentes avec un journal borné, puis tester une désactivation/contournement **réversible d'un bloc à la fois**, avec même entrée et voie témoin. La disparition du symptôme indique une piste, pas une cause certaine : réactiver, subdiviser et vérifier. Restituer les blocs non impliqués, préserver les originaux et la sécurité, ne pas transformer un bypass de diagnostic en comportement permanent sans ordre de Fab. Noter chaque essai et sa certitude dans `debughistorical.md`, ses dépendances dans `brainmap.md` et le prochain essai dans `todo.md`. Ce protocole s'active lorsque la recherche bloque, pas à chaque correctif trivial.
+
+## 7 — Délestage de contexte sans perte : FAB-MEM-004
+Quand le volume des mémoires devient lui-même un coût de travail, **ne pas sacrifier la mémoire : changer la manière de la charger**.
+
+Ordre de travail : `ordres-de-mission.md` reste séparé et se consulte d'abord pour l'objectif de Fab. Pour le quartet des mémoires actives, l'ordre canonique est :
+
+1. `todo.md`
+2. `brain.md`
+3. `brainmap.md`
+4. `debughistorical.md`
+
+À chaque intervention, inspecter l'état ou l'index des quatre puis ouvrir les sections pertinentes. Une lecture intégrale de tout le corpus est réservée à un audit global, une refonte transversale ou une dépendance que l'on n'arrive pas à localiser.
+
+Si du contenu ancien, résolu ou devenu purement historique encombre une mémoire active, le transférer **sans perte** vers `sauvegarde.md` avec : fichier source, ID/date/version, contexte nécessaire et motif d'expiration. Ce fichier porte clairement : **`ARCHIVE / EXPIRÉ — NE PAS LIRE PAR DÉFAUT`**. Il n'est pas une cinquième mémoire active et n'est rouvert que sur indice précis, régression, besoin historique ciblé ou demande de Fab.
+
+`debughistorical.md` privilégie alors les incidents récents/pertinents, les problèmes ouverts et les causes/préventions encore utiles. Les anciennes fausses pistes peuvent être archivées. `todo.md` conserve toute tâche encore ouverte, quel que soit son âge. `brain.md` garde le contrat courant et `brainmap.md` la carte technique nécessaire à la compréhension/reconstruction du programme.
+
+Le délestage est réversible et traçable : **optimiser le contexte n'est jamais supprimer la connaissance.**

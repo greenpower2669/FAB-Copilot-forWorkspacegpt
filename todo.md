@@ -64,3 +64,10 @@ Chaque nouveau contournement doit décrire **cause, condition d'application, alt
 - [ ] Réempaqueter une version de skill comprenant FAB-DEBUG-001 ; le ZIP v0.3.0 existant correspond à l'ancienne source. Vérifier le ZIP exact avant de proposer sa réinstallation.
 - [ ] Faire confirmer le remplacement/la recharge de la skill déjà installée par Fab ; modifier main ne met pas à jour le client.
 - [ ] Lors d'un prochain débogage bloqué, éprouver sur un même scénario la boucle reporting → neutralisation unitaire → réactivation → comparaison ; consigner les résultats réels, sans prétendre l'avoir déjà validée sur appareil.
+
+## FAB-MEM-004 — Délestage contextuel (28/09/2026)
+- [x] [FAB] Fixer l'ordre canonique des quatre mémoires actives : `todo.md` → `brain.md` → `brainmap.md` → `debughistorical.md` ; `ordres-de-mission.md` reste séparé et prioritaire pour les demandes utilisateur.
+- [x] [AGENT] Définir `sauvegarde.md` comme archive froide facultative, marquée « EXPIRÉ — NE PAS LIRE PAR DÉFAUT », sans perte de provenance ni d'identifiants.
+- [x] [AGENT] Remplacer la relecture exhaustive systématique par lecture des index/états utiles puis chargement des seules sections pertinentes, sauf audit global/refonte/dépendance incertaine.
+- [ ] [AGENT] Appliquer FAB-MEM-004 au prochain projet où le poids des mémoires devient matériel, puis vérifier qu'aucune information active n'a été perdue.
+- [ ] [AGENT] Réempaqueter la skill après intégration de FAB-MEM-004 et faire confirmer son rechargement dans les clients déjà installés.

@@ -42,3 +42,11 @@ Aucun incident du code `asset_gate.py` n'a été identifié ni corrigé pendant 
 - **Risque visé (hypothèse générale, pas cause attribuée à EasyCut) :** enchaîner plusieurs correctifs non isolés sans savoir quel bloc contribue au symptôme et sans pouvoir distinguer correction de régression.
 - **Prévention inscrite :** FAB-DEBUG-001 dans la skill ; baseline, logs bornés, un bloc/une variable par essai, voie témoin, réversibilité, confirmation et traçabilité dans les mémoires.
 - **Preuve de réalisation :** fichier SKILL.md et les documents liés dans le commit Git de cette intervention ; pas de test d'efficacité sur une panne réelle revendiqué, ni d'activation automatique dans un client déjà installé.
+
+## FAB-HIST-005 — Relecture exhaustive des mémoires devenue coûteuse (28/09/2026)
+- **Catégorie :** amélioration méthodologique, pas bug applicatif démontré.
+- **Observation de Fab :** avec la croissance des projets, les mémoires vivantes essentielles peuvent devenir assez volumineuses pour alourdir la fenêtre de travail si elles sont relues intégralement à chaque petite intervention.
+- **Cause méthodologique identifiée :** FAB-MEM-001 imposait une inspection des quatre mémoires mais la formulation pouvait être interprétée comme une injection exhaustive de leur contenu à chaque action ; `brainmap.md` est volontairement complet, ce qui amplifie le coût à grande échelle.
+- **Correction :** FAB-MEM-004 distingue inspection/indexation obligatoire et chargement détaillé ciblé. Ordre canonique du quartet : `todo.md` → `brain.md` → `brainmap.md` → `debughistorical.md`; `ordres-de-mission.md` reste séparé et prioritaire.
+- **Délestage :** ancien contenu expiré peut être transféré sans perte dans `sauvegarde.md`, marqué archive froide / ne pas lire par défaut, avec provenance et identifiants permettant sa récupération.
+- **Prévention :** ne jamais confondre optimisation du contexte avec suppression de connaissance ; conserver tâches ouvertes, contrat courant, architecture encore vraie, causes/préventions utiles et preuves nécessaires.

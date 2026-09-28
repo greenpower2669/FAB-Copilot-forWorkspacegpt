@@ -212,3 +212,28 @@ Fichiers sources : `skills/fab-copilot/SKILL.md` applique FAB-MISSION-001 ; `doc
 - **Propagation :** symptôme → debughistorical (observation/hypothèse/preuve) ; choix d'isolation et dépendances → brainmap ; évolution des exigences seulement → brain ; prochain essai, blocs à restaurer et tests → todo ; ordre explicite de Fab → ordres-de-mission.
 - **Garde-fous :** drapeaux temporaires explicites, changements réversibles, originaux et sauvegardes intacts, pas de désactivation silencieuse sécurité/intégrité ; le résultat « bug absent » n'établit pas une cause sans essai de confirmation. Sur app Android, CI ≠ validation appareil. Ne pas changer plusieurs variables entre comparaisons.
 - **Limite de diffusion :** la source SKILL.md du dépôt peut changer sans que le client actualise sa copie installée ; ZIP v0.3.0 antérieur non mis à jour ici.
+
+## 13 — FAB-MEM-004 : délestage contextuel et archive froide (28/09/2026)
+
+```mermaid
+flowchart TD
+  Mission[ordres-de-mission.md séparé] --> T[todo.md : état/action]
+  T --> B[brain.md : contrat courant]
+  B --> M[brainmap.md : carte technique]
+  M --> H[debughistorical.md : historique utile]
+  T --> Relevant[Lire index + sections pertinentes]
+  B --> Relevant
+  M --> Relevant
+  H --> Relevant
+  Relevant --> Work[Travail courant]
+  H -->|ancien/résolu/fausse piste| Cold[sauvegarde.md : archive froide]
+  Cold -->|indice actif, régression ou demande Fab| Relevant
+```
+
+**Ordre canonique du quartet actif :** `todo.md` → `brain.md` → `brainmap.md` → `debughistorical.md`. `ordres-de-mission.md` reste séparé et se consulte avant ce quartet pour préserver l'objectif de Fab.
+
+**Règle de chargement :** la formulation ancienne « lire les quatre mémoires » signifie désormais **inspecter leur état/index et charger les sections pertinentes**, pas injecter tout leur contenu dans le contexte. Une lecture exhaustive reste requise pour un audit global, une refonte transversale ou lorsqu'une dépendance n'est pas suffisamment localisée.
+
+**Délestage :** lorsqu'un bloc ancien ne sert plus au travail courant mais doit être conservé, le transférer vers `sauvegarde.md` avec source, ID/date/version et motif d'expiration. Le fichier froid doit afficher `ARCHIVE / EXPIRÉ — NE PAS LIRE PAR DÉFAUT`. Il n'est pas une cinquième mémoire active.
+
+**Intégrité :** aucune mission utilisateur ouverte, tâche non terminée, exigence courante, architecture encore vraie, cause/prévention utile ou preuve nécessaire ne peut être supprimée uniquement pour gagner de la place.

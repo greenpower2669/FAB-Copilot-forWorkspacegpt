@@ -53,6 +53,21 @@ Avant **toute** modification de code, skill, configuration ou architecture, lire
 
 Si une régression survient, vérifier si la carte était incomplète et enrichir la compréhension. Ne jamais attribuer à Fab une supposition de l'agent. Cette règle s'applique **aussi à FAB Copilot**. Protocole : [MEMOIRE-VIVANTE.md](../../docs/MEMOIRE-VIVANTE.md). Contrat : [brain.md](../../brain.md) ; carte : [brainmap.md](../../brainmap.md).
 
+## Règle absolue — FAB-MEM-004 : délestage contextuel sans perte
+
+**FAB-MEM-004 précise la manière de lire FAB-MEM-001 lorsque les mémoires deviennent volumineuses.** Il ne supprime aucune mémoire et ne permet aucune perte d'information.
+
+1. Lire `ordres-de-mission.md` en premier comme registre séparé des objectifs de Fab.
+2. Pour les quatre mémoires actives, utiliser l'ordre canonique : **`todo.md` → `brain.md` → `brainmap.md` → `debughistorical.md`**.
+3. À chaque intervention, inspecter l'état/index des quatre et charger en détail seulement les sections liées au changement courant. Ne lire intégralement toutes les mémoires que pour un audit global, une refonte transversale ou lorsqu'une dépendance reste incertaine.
+4. Si un bloc ancien doit quitter une mémoire active pour réduire le contexte, le transférer **sans perte** dans `sauvegarde.md`, avec fichier source, ID/date/version, contexte minimal et motif d'expiration. En tête : **`ARCHIVE / EXPIRÉ — NE PAS LIRE PAR DÉFAUT`**.
+5. Ne rouvrir `sauvegarde.md` que si un indice actif, une régression, une recherche historique précise ou Fab le demande. Ce fichier n'est pas une cinquième mémoire active.
+6. Garder dans `debughistorical.md` les incidents récents/pertinents, les problèmes ouverts et les causes/préventions susceptibles d'éviter une régression. Les fausses pistes anciennes et épisodes résolus peuvent être délestés après sauvegarde.
+7. Garder dans `todo.md` toutes les tâches encore ouvertes, même anciennes ; l'âge seul n'autorise jamais leur suppression.
+8. `brain.md` garde le contrat courant et `brainmap.md` la carte nécessaire à la compréhension/reconstruction du logiciel. L'optimisation de contexte ne doit jamais appauvrir ces deux rôles.
+
+Cette méthode vise à réduire la pression de contexte et les relectures inutiles. Elle **n'impose aucun sous-agent** et ne justifie jamais de masquer une dépendance inconnue.
+
 **Livraison :** pour toute version prête à distribuer, publier une GitHub Release vérifiée et fournir sa page et les liens directs vers ses fichiers ; pour Android, APK/AAB distincts selon le besoin, noms projet/version, icône. Ne jamais substituer un ZIP ou un artefact Actions temporaire à un APK. Si la publication est impossible, l'indiquer dans `todo.md` sans annoncer une release inexistante.
 
 ## Quand ouvrir les références

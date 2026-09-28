@@ -37,3 +37,11 @@
 - **Produit demandé :** règle conditionnelle explicite dans la skill FAB Copilot, liée aux quatre mémoires et au diagnostic réversible ; pas un changement du code EasyCut ni une désactivation permanente.
 - **Statut :** intégré aux sources Git de FAB Copilot ; activation dans une skill déjà installée et reconditionnement du ZIP à vérifier. La présence dans Git seule ne recharge pas la copie importée.
 - **Liens :** `skills/fab-copilot/SKILL.md` ; `brain.md` ; `brainmap.md` ; `todo.md`.
+
+## Mission méthodologique FAB-MEM-004 — Délestage contextuel des mémoires
+- **Demandeur / date :** Fab, 28/09/2026.
+- **Commande :** préserver les mémoires essentielles tout en évitant qu'elles remplissent inutilement le contexte de travail. Dans le quartet actif, utiliser toujours l'ordre `todo.md` → `brain.md` → `brainmap.md` → `debughistorical.md`. `ordres-de-mission.md` reste séparé.
+- **Règle de conservation :** rien n'est détruit pour gagner de la place. Les blocs anciens/expirés peuvent être transférés dans `sauvegarde.md`, archive froide marquée « EXPIRÉ — NE PAS LIRE PAR DÉFAUT », avec provenance et identifiants.
+- **Règle de lecture :** lire l'état/index des mémoires puis seulement les sections pertinentes ; lecture exhaustive pour audit global, refonte transversale ou dépendance incertaine.
+- **Critère produit :** méthode inscrite dans la source FAB Copilot et dans ses quatre mémoires ; application concrète à un projet consommateur seulement lorsque Fab choisit de la lancer.
+- **Statut :** **intégré dans les sources Git par cette intervention ; reconditionnement/rechargement de la skill encore à faire si l'on veut l'utiliser depuis une copie déjà installée.**
