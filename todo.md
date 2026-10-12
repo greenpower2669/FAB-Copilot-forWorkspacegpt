@@ -5,8 +5,8 @@
 - [x] Intégrer FAB-IMMUTABLE-001, FAB-ANDROID-SIGN-001, FAB-CLOSE-001, FAB-APK-TEMP-001 et FAB-REL-001.
 - [x] Remplacer la dépendance à un tag manuel par `release-version.txt` + création du tag dans GitHub Actions.
 - [x] Archiver les anciennes missions/tâches/incidents dans `sauvegarde.md` et nettoyer les vues actives.
-- [ ] Merger sur `main` et obtenir un workflow vert.
-- [ ] Vérifier la Release `v0.4.0`, le ZIP et son SHA-256.
+- [x] Merger sur `main` et obtenir une validation de fin de chaîne matérialisée par `verified-v0.4.0`.
+- [x] Vérifier la Release `v0.4.0`, le ZIP et son SHA-256 : le workflow a re-téléchargé les assets, validé le checksum et créé `verified-v0.4.0`.
 - [ ] Faire confirmer par Fab la réimportation/activation de la skill v0.4.0 dans ChatGPT.
 
 ## Validation future utile
