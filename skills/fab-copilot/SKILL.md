@@ -110,7 +110,7 @@ Quand un build Android utile à Fab n'est disponible que dans un ZIP/artefact Gi
 
 ## FAB-REL-001 — Packaging/release autonome de la skill
 
-Le dépôt FAB Copilot possède un workflow GitHub Actions `.github/workflows/release-skill.yml`. Un tag `vX.Y.Z` cohérent avec `plugin.json` déclenche : contrôle de version, tests Python, construction du ZIP importable avec `SKILL.md` à sa racine et `references/`, contrôle du contenu, puis création/mise à jour de la GitHub Release avec le ZIP comme asset. La permission `contents: write` est limitée au job de release. Aucun secret supplémentaire n'est requis : le workflow utilise `GITHUB_TOKEN`.
+Le dépôt FAB Copilot possède un workflow GitHub Actions `.github/workflows/release-skill.yml`. `release-version.txt` est le déclencheur de publication : lorsqu'il change sur `main`, il doit correspondre exactement à `plugin.json`. GitHub Actions exécute les tests Python, construit le ZIP importable avec `SKILL.md` à sa racine et `references/`, contrôle le contenu, crée le tag `vX.Y.Z` si nécessaire puis crée/met à jour la GitHub Release avec le ZIP et son SHA-256. La permission `contents: write` est limitée au workflow de release. Aucun secret supplémentaire n'est requis : le workflow utilise `GITHUB_TOKEN`.
 
 ## Quand ouvrir les références
 
