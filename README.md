@@ -56,7 +56,7 @@ Chaque version prête à distribuer passe par une GitHub Release vérifiée, ave
 
 Si un bug résiste et que les essais ne font presque plus progresser la compréhension : revenir à la référence stable, augmenter le reporting ciblé, contourner temporairement un bloc à la fois et comparer le même scénario avant de conclure. Chaque test est réversible et documenté ; un soupçon n'est pas une preuve. La règle détaillée vit dans [la skill](skills/fab-copilot/SKILL.md).
 
-**Installation :** à partir de v0.4.0, le ZIP de la skill est construit automatiquement par GitHub Actions et publié dans la GitHub Release lors du push du tag de version.
+**Installation :** à partir de v0.4.0, `release-version.txt` est la demande explicite de publication. Lorsqu'il change sur `main`, GitHub Actions vérifie qu'il correspond à `plugin.json`, teste, fabrique le ZIP puis crée le tag et la GitHub Release.
 
 ## Évolution
 
@@ -66,4 +66,4 @@ Licence MIT pour le code original ici. Superpowers est distinct, cité comme ins
 
 ## ZIP de réinstallation — 0.4.0
 
-Le workflow `release-skill.yml` fabrique `fab-copilot-v0.4.0-skill.zip` avec `SKILL.md` à la racine et `references/`, vérifie son contenu puis l'attache à la GitHub Release du tag `v0.4.0`.
+Le workflow `release-skill.yml` lit `release-version.txt`, fabrique `fab-copilot-v0.4.0-skill.zip` avec `SKILL.md` à la racine et `references/`, vérifie son contenu, crée le tag `v0.4.0` si nécessaire puis publie/actualise la GitHub Release.

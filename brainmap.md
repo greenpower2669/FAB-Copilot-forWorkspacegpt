@@ -160,7 +160,7 @@ flowchart TD
   Rel --> Links[Page Release + assets directs vérifiés]
 ```
 - `plugin.json` annonce la version de plugin ; `README.md` et la skill doivent rester cohérents.
-- `.github/workflows/release-skill.yml` transforme un tag `vX.Y.Z` cohérent avec `plugin.json` en ZIP contrôlé puis GitHub Release via `softprops/action-gh-release`; `contents: write` est accordé au job. Un commit seul reste distinct d'une Release.
+- `.github/workflows/release-skill.yml` transforme un changement de `release-version.txt` sur `main` en ZIP contrôlé puis GitHub Release via la CLI GitHub `gh`; la version doit correspondre à `plugin.json`. Le workflow crée lui-même le tag et dispose de `contents: write`. Un commit seul reste distinct d'une Release.
 - Le dépôt FAB Copilot ne produit pas d'APK/AAB : la règle vise les projets Android utilisant la skill.
 
 ## 8. Dépendances, frontières et invariants
@@ -211,7 +211,7 @@ Fichiers sources : `skills/fab-copilot/SKILL.md` applique FAB-MISSION-001 ; `doc
 - **Boucle :** stable + scénario → hypothèse falsifiable → logs bornés par frontière/étape → désactiver ou contourner UN bloc → exécuter même scénario contre témoin → comparer → réactiver / subdiviser / confirmer → historiser et nettoyer instrumentation. Le mode historique ou parcours stable reste accessible quand une option de test est créée.
 - **Propagation :** symptôme → debughistorical (observation/hypothèse/preuve) ; choix d'isolation et dépendances → brainmap ; évolution des exigences seulement → brain ; prochain essai, blocs à restaurer et tests → todo ; ordre explicite de Fab → ordres-de-mission.
 - **Garde-fous :** drapeaux temporaires explicites, changements réversibles, originaux et sauvegardes intacts, pas de désactivation silencieuse sécurité/intégrité ; le résultat « bug absent » n'établit pas une cause sans essai de confirmation. Sur app Android, CI ≠ validation appareil. Ne pas changer plusieurs variables entre comparaisons.
-- **Limite de diffusion :** la source SKILL.md du dépôt peut changer sans que le client actualise sa copie installée ; ZIP v0.3.0 antérieur non mis à jour ici.
+- **Limite de diffusion :** la source SKILL.md du dépôt peut changer sans que le client actualise sa copie installée ; à partir de v0.4.0, FAB-REL-001 produit le ZIP versionné à réimporter.
 
 ## 13 — FAB-MEM-004 : délestage contextuel et archive froide (28/09/2026)
 
@@ -240,4 +240,7 @@ flowchart TD
 
 
 ## 14 — FAB-REL-001 : chaîne de packaging/release
-`tag vX.Y.Z` → checkout → cohérence tag/plugin.json → tests `asset_gate.py` → copie de `skills/fab-copilot/SKILL.md` + `references/` dans staging → ZIP versionné → contrôle du ZIP → GitHub Release + asset ZIP. Le workflow utilise uniquement `GITHUB_TOKEN` avec `contents: write` et ne stocke aucun secret applicatif.
+`release-version.txt` modifié sur `main` → checkout → cohérence marqueur/plugin.json → tests `asset_gate.py` → copie de `skills/fab-copilot/SKILL.md` + `references/` dans staging → ZIP versionné → contrôle du ZIP + SHA-256 → `gh release create/upload` avec création du tag si nécessaire. Le workflow utilise uniquement `GITHUB_TOKEN` avec `contents: write` et ne stocke aucun secret applicatif.
+
+### 14.1 Frontière de déclenchement
+Le workflow ne dépend plus d'une action externe de création de tag. `release-version.txt` est un petit fichier contrôlable par Git ; sa modification constitue la demande de publication. Le workflow refuse une divergence avec `plugin.json`. Cette frontière rend la Release pilotable par les mêmes capacités Git que le reste du dépôt.

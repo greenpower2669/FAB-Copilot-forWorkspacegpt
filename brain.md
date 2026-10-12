@@ -1,6 +1,6 @@
 # 🧠 FAB Copilot — brain.md
 > Contrat fonctionnel vivant · Référence de l'intention, pas inventaire du code.
-> Dernière synchronisation : 2026-09-21 · Première adoption du protocole FAB-MEM-001.
+> Dernière synchronisation : 2026-10-12 · FAB Copilot v0.4.0.
 
 ## Mission
 FAB Copilot aide Fabrice à développer, déboguer, conditionner et livrer ses projets tout en conservant son initiative. La méthode est légère et fondée sur le *pourquoi* des règles. Elle n'ajoute ni serveur MCP obligatoire, ni sous-agents, ni TDD, ni interruption sans motif concret. L'humain conserve les décisions et les validations sur appareil.
@@ -66,4 +66,4 @@ Quand Fab valide une mission comme satisfaisante et ordonne le merge `main` + Re
 Pour économiser stockage et transferts sur le téléphone de test, un APK livré uniquement dans un ZIP/artefact doit, lorsque GitHub/CI le permet, être extrait côté GitHub puis rendu directement disponible en `temp/` (ou emplacement temporaire canonique du projet). Fab reçoit le lien de l'`.apk` installable. Sol/Astra ne téléchargent pas le ZIP seulement pour le décompresser. Le ZIP peut subsister comme artefact technique, mais n'est pas le chemin d'installation. Les copies temporaires sont nettoyées lorsqu'elles ne servent plus, sans supprimer une copie à conserver.
 
 ### FAB-REL-001 — Release automatisée de FAB Copilot (12/10/2026)
-Le dépôt conditionne sa skill via GitHub Actions. Un tag de version cohérent avec `plugin.json` déclenche les tests, fabrique le ZIP importable (`SKILL.md` à la racine + `references/`), vérifie l'archive puis crée la GitHub Release avec ce ZIP. Cette automatisation évite de dépendre d'un connecteur capable d'uploader directement un binaire de Release.
+Le dépôt conditionne sa skill via GitHub Actions. `release-version.txt`, cohérent avec `plugin.json`, déclenche sur `main` les tests, fabrique le ZIP importable (`SKILL.md` à la racine + `references/`), vérifie l'archive, crée le tag puis la GitHub Release avec ZIP + SHA-256. Cette automatisation évite de dépendre d'un connecteur capable de créer un tag ou d'uploader directement un binaire de Release.

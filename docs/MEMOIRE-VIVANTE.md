@@ -74,3 +74,19 @@ Si du contenu ancien, résolu ou devenu purement historique encombre une mémoir
 `debughistorical.md` privilégie alors les incidents récents/pertinents, les problèmes ouverts et les causes/préventions encore utiles. Les anciennes fausses pistes peuvent être archivées. `todo.md` conserve toute tâche encore ouverte, quel que soit son âge. `brain.md` garde le contrat courant et `brainmap.md` la carte technique nécessaire à la compréhension/reconstruction du programme.
 
 Le délestage est réversible et traçable : **optimiser le contexte n'est jamais supprimer la connaissance.**
+
+
+## 8 — Socle immuable : FAB-IMMUTABLE-001
+Chaque `ordres-de-mission.md` commence par **IMMUTABLE / À PRÉSERVER** : identités de publication, package/application ID, noms/chemins réellement contractuels, conventions de signature et noms/rôles des Secrets. Jamais de valeur de secret. Toute évolution exige l'accord explicite de Fab et un avenant daté.
+
+## 9 — Signature Android / Google Play : FAB-ANDROID-SIGN-001
+Séparer App Signing Key et Upload Key. Les secrets d'Upload Key restent privés et propres à chaque application ; le certificat `.pem` est public. En cas de perte d'Upload Key, sauvegarder une nouvelle clé puis demander la réinitialisation de la clé d'importation ; ne pas remplacer l'App Signing Key pour ce motif.
+
+## 10 — Clôture propre : FAB-CLOSE-001
+Un ordre explicite de merge `main` + Release entraîne un nettoyage sans perte : préserver IMMUTABLE, déplacer l'historique clos vers `sauvegarde.md`, garder `todo.md` réellement ouvert, conserver dans `debughistorical.md` seulement les incidents encore utiles, réaligner `brain.md` et `brainmap.md`.
+
+## 11 — APK direct : FAB-APK-TEMP-001
+Si un APK n'est disponible que dans un ZIP/artefact, privilégier l'extraction côté GitHub/CI et exposer directement l'`.apk` dans `temp/` ou le répertoire temporaire canonique. Le téléphone n'a pas à stocker ZIP + extraction pour un simple test.
+
+## 12 — Release autonome de FAB Copilot : FAB-REL-001
+Dans ce dépôt, `release-version.txt` doit correspondre à `plugin.json`. Sa modification sur `main` déclenche le workflow de release : tests, ZIP contrôlé, SHA-256, création du tag si nécessaire, puis GitHub Release. Ainsi la publication ne dépend pas d'une capacité externe à créer un tag ou téléverser un asset.
