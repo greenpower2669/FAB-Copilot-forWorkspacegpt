@@ -38,7 +38,7 @@ Chaque projet utilisant la skill possède à sa racine `ordres-de-mission.md`, *
 
 ### FAB-DEBUG-001 — Progression empirique quand un débogage stagne (demande de Fab, 25/09/2026)
 Déclencheur : manque de connaissance ou progrès nul/très faible après plusieurs essais, hypothèses indiscernables ou corrections qui déplacent le bug. L'agent revient à une version stable et à un scénario reproductible, augmente les journaux aux limites utiles de chaque bloc, puis neutralise **un seul bloc à la fois**, réversiblement, en comparant à témoin et entrée identiques. L'absence de bug après désactivation désigne un suspect et non une cause démontrée. Réactiver et réduire jusqu'à une relation causale vérifiable ; préserver sécurité, intégrité, originaux et sauvegardes. Aucune suppression définitive d'une fonctionnalité pour masquer l'incident. Éviter les logs volumineux, les secrets et données personnelles. Si les essais n'apportent aucune preuve discriminante, demander l'observation humaine ciblée plutôt que boucler. Archiver les résultats et la certitude dans debughistorical ; dépendances et blocs dans brainmap ; prochain pas dans todo ; contrat dans brain seulement si pertinent. Ce mode est contextuel et ne s'impose pas aux bugs évidents.
-**Limite de diffusion :** source Git modifiée ≠ skill déjà installée mise à jour ; l'ancien ZIP v0.3.0 doit être remplacé pour contenir FAB-DEBUG-001.
+**Diffusion :** source Git modifiée ≠ skill déjà installée mise à jour ; FAB-REL-001 produit désormais le ZIP versionné à réimporter lors d'une Release.
 
 ### FAB-MEM-004 — Délestage contextuel sans perte (demande de Fab, 28/09/2026)
 Quand les mémoires vivantes deviennent assez volumineuses pour alourdir inutilement la fenêtre de travail, leur intégrité doit être conservée **sans imposer une relecture exhaustive à chaque petite intervention**.
@@ -64,3 +64,6 @@ Quand Fab valide une mission comme satisfaisante et ordonne le merge `main` + Re
 
 ### FAB-APK-TEMP-001 — APK direct depuis GitHub/CI (demande de Fab, 12/10/2026)
 Pour économiser stockage et transferts sur le téléphone de test, un APK livré uniquement dans un ZIP/artefact doit, lorsque GitHub/CI le permet, être extrait côté GitHub puis rendu directement disponible en `temp/` (ou emplacement temporaire canonique du projet). Fab reçoit le lien de l'`.apk` installable. Sol/Astra ne téléchargent pas le ZIP seulement pour le décompresser. Le ZIP peut subsister comme artefact technique, mais n'est pas le chemin d'installation. Les copies temporaires sont nettoyées lorsqu'elles ne servent plus, sans supprimer une copie à conserver.
+
+### FAB-REL-001 — Release automatisée de FAB Copilot (12/10/2026)
+Le dépôt conditionne sa skill via GitHub Actions. Un tag de version cohérent avec `plugin.json` déclenche les tests, fabrique le ZIP importable (`SKILL.md` à la racine + `references/`), vérifie l'archive puis crée la GitHub Release avec ce ZIP. Cette automatisation évite de dépendre d'un connecteur capable d'uploader directement un binaire de Release.
