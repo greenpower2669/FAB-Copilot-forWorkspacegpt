@@ -67,3 +67,6 @@ Pour économiser stockage et transferts sur le téléphone de test, un APK livr�
 
 ### FAB-REL-001 — Release automatisée de FAB Copilot (12/10/2026)
 Le dépôt conditionne sa skill via GitHub Actions. `release-version.txt`, cohérent avec `plugin.json`, déclenche sur `main` les tests, fabrique le ZIP importable (`SKILL.md` à la racine + `references/`), vérifie l'archive, crée le tag puis la GitHub Release avec ZIP + SHA-256. Cette automatisation évite de dépendre d'un connecteur capable de créer un tag ou d'uploader directement un binaire de Release.
+
+### Preuve de Release FAB Copilot
+Une publication FAB Copilot n'est considérée vérifiée qu'après re-téléchargement de ses assets depuis GitHub Release, validation du fichier SHA-256 et contrôle des règles attendues dans le ZIP. Le workflow matérialise cette fin de chaîne par le tag technique `verified-vX.Y.Z`. Pour v0.4.0, `v0.4.0` et `verified-v0.4.0` sont tous deux présents.
