@@ -45,3 +45,11 @@
 - **Règle de lecture :** lire l'état/index des mémoires puis seulement les sections pertinentes ; lecture exhaustive pour audit global, refonte transversale ou dépendance incertaine.
 - **Critère produit :** méthode inscrite dans la source FAB Copilot et dans ses quatre mémoires ; application concrète à un projet consommateur seulement lorsque Fab choisit de la lancer.
 - **Statut :** **intégré dans les sources Git par cette intervention ; reconditionnement/rechargement de la skill encore à faire si l'on veut l'utiliser depuis une copie déjà installée.**
+
+
+## Mission méthodologique FAB-IMMUTABLE-001 / FAB-ANDROID-SIGN-001 / FAB-CLOSE-001 — invariants, signature et clôture propre
+- **Demandeur / date :** Fab, 12/10/2026.
+- **Commande :** généraliser dans FAB Copilot le protocole validé sur GeckoDoku : section IMMUTABLE dans `ordres-de-mission.md`, package/application ID et noms contractuels protégés, procédure de signature Android/Google Play reproductible sans exposer les secrets, et nettoyage/archivage des mémoires lors d'un merge `main` + Release.
+- **Secrets :** ne mémoriser que les noms/rôles canoniques ; jamais les valeurs. `ANDROID_UPLOAD_KEYSTORE_BASE64` représente la sauvegarde chiffrée du keystore selon la procédure du projet ; le `.pem` reste un certificat public.
+- **Clôture :** les cinq fichiers actifs doivent refléter la version réellement livrée ; le vieux détail utile est déplacé vers `sauvegarde.md`, avec pointeurs courts depuis l'actif lorsque nécessaire.
+- **Statut :** intégré sur branche dédiée FAB Copilot ; merge `main` et reconditionnement de la skill non effectués sans ordre explicite de Fab.
