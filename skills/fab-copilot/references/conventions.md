@@ -15,6 +15,13 @@
 - Si la demande porte sur un prototype ou un APK uniquement, suivre le périmètre demandé ; ne pas fabriquer un AAB ou une Web App non souhaités juste pour cocher une case.
 - Ne pas annoncer APK, AAB, icône, GitHub release ou tests comme prêts avant validation des fichiers, de leurs chemins et des résultats des builds. Une erreur de build doit être rapportée.
 
+## Identité de publication et signature Android
+
+- Pour une application déjà enregistrée sur un store, relever et figer dans la section IMMUTABLE de `ordres-de-mission.md` son **package/application ID exact**. Ne jamais le renommer pendant une mise à jour : un changement d'identité crée une autre application au lieu de mettre à jour l'existante.
+- Conserver aussi les noms de fichiers, artefacts, chemins ou identifiants de publication uniquement lorsqu'ils sont réellement contractuels pour la chaîne de build/upload.
+- Pour Google Play, ne pas confondre App Signing Key et Upload Key. Les Secrets Android peuvent utiliser les noms canoniques `ANDROID_UPLOAD_STORE_PASSWORD`, `ANDROID_UPLOAD_KEY_PASSWORD`, `ANDROID_UPLOAD_KEY_ALIAS`, `ANDROID_UPLOAD_KEYSTORE_BASE64`, avec des valeurs propres à chaque application. Ne jamais documenter leurs valeurs.
+- Un certificat public `.pem` identifie la clé d'importation mais ne permet pas de reconstruire sa clé privée. La sauvegarde du keystore privé chiffré doit être durable, testée par reconstruction et conservée séparément des mots de passe.
+
 ## Synchronisation continue — FAB-MEM-001
 
 Les quatre fichiers `brain.md`, `brainmap.md` (**complète, hiérarchisée, sans limite de taille arbitraire**), `debughistorical.md` et `todo.md` vivent pendant **chaque** action sur code, skill ou configuration ; un même commit doit contenir l'implémentation et ses mises à jour documentaires pertinentes. Lire tous les quatre ; ne modifier que ceux réellement touchés. Une interruption se consigne immédiatement, sans remettre les mémoires à plus tard. Voir `../../../docs/MEMOIRE-VIVANTE.md`.

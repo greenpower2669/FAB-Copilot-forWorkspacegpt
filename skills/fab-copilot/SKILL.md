@@ -70,6 +70,33 @@ Cette méthode vise à réduire la pression de contexte et les relectures inutil
 
 **Livraison :** pour toute version prête à distribuer, publier une GitHub Release vérifiée et fournir sa page et les liens directs vers ses fichiers ; pour Android, APK/AAB distincts selon le besoin, noms projet/version, icône. Ne jamais substituer un ZIP ou un artefact Actions temporaire à un APK. Si la publication est impossible, l'indiquer dans `todo.md` sans annoncer une release inexistante.
 
+## Règle absolue — FAB-IMMUTABLE-001 : socle projet à ne pas dériver
+
+En tête de chaque `ordres-de-mission.md`, maintenir une section **IMMUTABLE / À PRÉSERVER**, distincte des missions temporaires. Elle contient seulement les invariants vérifiés qui conditionnent la continuité : package/application ID tel qu'enregistré auprès du store, identité de publication, noms canoniques de fichiers/artefacts/chemins quand ils sont contractuels, conventions de signature, noms et rôles des Secrets. Ne jamais y stocker de valeur secrète.
+
+Un invariant ne change pas parce qu'un agent préfère un autre nom. Tout changement exige une validation explicite de Fab et un **avenant daté** ; préserver la trace précédente. Pour Android, le package/application ID est un invariant absolu pour les mises à jour d'une application existante.
+
+## Règle absolue — FAB-ANDROID-SIGN-001 : signature Android / Google Play
+
+- Distinguer **App Signing Key** (clé de signature de l'application conservée par Google Play App Signing) et **Upload Key** (clé privée qui signe les AAB envoyés à Google).
+- Méthode GitHub Actions sans PC : générer l'Upload Key dans le runner temporaire ; exporter son certificat public `.pem` ; chiffrer le keystore ; sauvegarder durablement la matière privée hors dépôt et dans un Secret ; vérifier qu'on peut reconstruire le keystore et signer/vérifier un AAB ; supprimer les fichiers privés temporaires.
+- Noms canoniques recommandés par dépôt : `ANDROID_UPLOAD_STORE_PASSWORD`, `ANDROID_UPLOAD_KEY_PASSWORD`, `ANDROID_UPLOAD_KEY_ALIAS`, `ANDROID_UPLOAD_KEYSTORE_BASE64`. Les noms peuvent être identiques d'une application à l'autre ; **les valeurs sont propres à chaque application** et ne sont jamais copiées dans Git, logs, mémoires ou chat.
+- Le certificat `.pem` est public et **ne contient pas la clé privée**. Un AAB signé et les mots de passe seuls ne remplacent pas une sauvegarde de la clé privée.
+- Perte d'Upload Key : chercher d'abord les sauvegardes/Secrets valides ; sinon créer une nouvelle Upload Key, la sauvegarder, exporter son nouveau `.pem`, demander dans Play Console la **réinitialisation de la clé d'importation**, attendre l'approbation avant d'envoyer un AAB signé avec elle. Ne pas remplacer l'App Signing Key pour une simple perte d'Upload Key.
+
+## Règle absolue — FAB-CLOSE-001 : nettoyage lors d'un merge main + Release
+
+Quand Fab considère la mission satisfaisante et donne l'ordre explicite de merge `main` + Release, la clôture comporte une **remise au propre obligatoire**, sans perte d'historique :
+
+1. préserver intégralement la section IMMUTABLE ;
+2. retirer de `ordres-de-mission.md` actif les détails des missions closes devenus inutiles et les archiver dans `sauvegarde.md` avec date/version/provenance ;
+3. réduire `todo.md` aux tâches réellement ouvertes/utiles ;
+4. garder dans `debughistorical.md` les bugs récents, ouverts ou les leçons anti-régression ; transférer les épisodes anciens résolus vers `sauvegarde.md` et laisser un pointeur court si leur retrouvabilité est utile ;
+5. réaligner `brain.md` sur la vérité fonctionnelle de la version livrée et `brainmap.md` sur l'architecture réelle ;
+6. vérifier que les cinq fichiers actifs se correspondent avant de déclarer la clôture terminée.
+
+Un bug résiduel connu n'interdit pas la clôture si Fab accepte explicitement la version ; il reste alors documenté comme état connu ou tâche ouverte selon sa pertinence.
+
 ## Quand ouvrir les références
 
 - Packaging, PWA/Android, ergonomie, versionnement, release → [conventions.md](references/conventions.md).
