@@ -72,7 +72,7 @@ jobs:
             gh release create "$TAG" "$ZIP" "$SUM" --target "$GITHUB_SHA" --title "FAB Copilot v${VERSION}" --generate-notes
           fi
 
-      - name: Verify published Release and persist proof
+      - name: Verify published Release
         shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
@@ -96,21 +96,14 @@ jobs:
 
           RELEASE_URL="$(gh release view "$TAG" --json url --jq '.url')"
           SHA256="$(cut -d' ' -f1 "$VERIFY_DIR/$SUM_NAME")"
-          PROOF_PATH="release-proof/v${VERSION}.txt"
-          cat > "$VERIFY_DIR/proof.txt" <<EOF
-FAB Copilot release verified
-version=${VERSION}
-tag=${TAG}
-zip=${ZIP_NAME}
-sha256=${SHA256}
-release=${RELEASE_URL}
-source_commit=${GITHUB_SHA}
-verified_by=.github/workflows/release-skill.yml
-EOF
-          CONTENT="$(base64 -w0 "$VERIFY_DIR/proof.txt")"
-          EXISTING_SHA="$(gh api "repos/${GITHUB_REPOSITORY}/contents/${PROOF_PATH}?ref=main" --jq '.sha' 2>/dev/null || true)"
-          if [ -n "$EXISTING_SHA" ]; then
-            gh api --method PUT "repos/${GITHUB_REPOSITORY}/contents/${PROOF_PATH}"               -f message="Release proof: FAB Copilot v${VERSION}"               -f content="$CONTENT"               -f branch="main"               -f sha="$EXISTING_SHA" >/dev/null
-          else
-            gh api --method PUT "repos/${GITHUB_REPOSITORY}/contents/${PROOF_PATH}"               -f message="Release proof: FAB Copilot v${VERSION}"               -f content="$CONTENT"               -f branch="main" >/dev/null
-          fi
+          echo "Verified $TAG $ZIP_NAME sha256=$SHA256 $RELEASE_URL"
+
+      - name: Mark verified Release
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          PROOF_TAG="verified-v${VERSION}"
+          git tag -f "$PROOF_TAG" "$GITHUB_SHA"
+          git push --force origin "refs/tags/$PROOF_TAG"
