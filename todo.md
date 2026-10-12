@@ -9,7 +9,7 @@
 - [x] Ajouter la documentation de présentation et relier les points d'entrée de la skill.
 - [ ] Exécuter localement les tests existants de `asset_gate.py` ; aucune exécution n'est attestée par ce seul changement de documentation.
 - [ ] Vérifier import/activation effectifs de la nouvelle version de la skill dans ChatGPT Work.
-- [ ] Créer une GitHub Release de la nouvelle version via un canal qui dispose de l'écriture Releases, puis vérifier le lien. **Un commit seul n'est pas une release.**
+- [ ] Publier v0.4.0 via le nouveau workflow de Release et vérifier le ZIP/Release. **Le workflow doit être réellement exécuté avant de cocher.**
 - [ ] Étudier plus tard, si utile, un contrôle automatique de cohérence (sans prétendre qu'il existe aujourd'hui).
 - [ ] Valider le protocole sur le prochain projet consommateur avec ses quatre propres fichiers.
 
@@ -61,7 +61,7 @@ Chaque nouveau contournement doit décrire **cause, condition d'application, alt
 ## FAB-DEBUG-001 — Nouvelle méthode de Fab (25/09/2026)
 - [x] Intégrer la stratégie conditionnelle « petit pas + reporting + isolation d'un bloc à la fois » aux sources de la skill, au contrat et à la cartographie, avec garde-fous et historique distinct des bugs avérés.
 - [x] Garder le déclencheur contextuel : ne pas imposer une longue procédure à chaque petit bug, ne pas transformer une hypothèse en cause démontrée.
-- [ ] Réempaqueter une version de skill comprenant FAB-DEBUG-001 ; le ZIP v0.3.0 existant correspond à l'ancienne source. Vérifier le ZIP exact avant de proposer sa réinstallation.
+- [ ] Vérifier que le ZIP v0.4.0 produit par FAB-REL-001 contient bien FAB-DEBUG-001.
 - [ ] Faire confirmer le remplacement/la recharge de la skill déjà installée par Fab ; modifier main ne met pas à jour le client.
 - [ ] Lors d'un prochain débogage bloqué, éprouver sur un même scénario la boucle reporting → neutralisation unitaire → réactivation → comparaison ; consigner les résultats réels, sans prétendre l'avoir déjà validée sur appareil.
 
@@ -70,4 +70,10 @@ Chaque nouveau contournement doit décrire **cause, condition d'application, alt
 - [x] [AGENT] Définir `sauvegarde.md` comme archive froide facultative, marquée « EXPIRÉ — NE PAS LIRE PAR DÉFAUT », sans perte de provenance ni d'identifiants.
 - [x] [AGENT] Remplacer la relecture exhaustive systématique par lecture des index/états utiles puis chargement des seules sections pertinentes, sauf audit global/refonte/dépendance incertaine.
 - [ ] [AGENT] Appliquer FAB-MEM-004 au prochain projet où le poids des mémoires devient matériel, puis vérifier qu'aucune information active n'a été perdue.
-- [ ] [AGENT] Réempaqueter la skill après intégration de FAB-MEM-004 et faire confirmer son rechargement dans les clients déjà installés.
+- [ ] [AGENT] Vérifier que le ZIP v0.4.0 produit par FAB-REL-001 contient FAB-MEM-004 et faire confirmer son rechargement.
+
+
+## FAB-REL-001 — Release automatisée v0.4.0 (12/10/2026)
+- [x] Ajouter un workflow de packaging/release déclenché par tag `v*`.
+- [x] Faire vérifier version, tests et contenu du ZIP avant publication.
+- [ ] Merger le workflow sur `main`, déclencher la publication v0.4.0 et vérifier la Release/asset.

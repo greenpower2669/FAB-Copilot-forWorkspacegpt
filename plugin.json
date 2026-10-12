@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "fab-copilot",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "FAB Copilot : développement léger, ordres de mission persistants, quatre mémoires synchronisées, cartographie complète, relais humain contextuel et releases vérifiées.",
   "repository": "https://github.com/greenpower2669/FAB-Copilot-forWorkspacegpt",
   "license": "MIT",

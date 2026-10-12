@@ -160,7 +160,7 @@ flowchart TD
   Rel --> Links[Page Release + assets directs vérifiés]
 ```
 - `plugin.json` annonce la version de plugin ; `README.md` et la skill doivent rester cohérents.
-- GitHub Actions ou commit seuls **ne sont pas** des GitHub Releases. Si l'API courante ne permet pas de publier une release, la signaler comme non créée dans `todo.md`.
+- `.github/workflows/release-skill.yml` transforme un tag `vX.Y.Z` cohérent avec `plugin.json` en ZIP contrôlé puis GitHub Release via `softprops/action-gh-release`; `contents: write` est accordé au job. Un commit seul reste distinct d'une Release.
 - Le dépôt FAB Copilot ne produit pas d'APK/AAB : la règle vise les projets Android utilisant la skill.
 
 ## 8. Dépendances, frontières et invariants
@@ -237,3 +237,7 @@ flowchart TD
 **Délestage :** lorsqu'un bloc ancien ne sert plus au travail courant mais doit être conservé, le transférer vers `sauvegarde.md` avec source, ID/date/version et motif d'expiration. Le fichier froid doit afficher `ARCHIVE / EXPIRÉ — NE PAS LIRE PAR DÉFAUT`. Il n'est pas une cinquième mémoire active.
 
 **Intégrité :** aucune mission utilisateur ouverte, tâche non terminée, exigence courante, architecture encore vraie, cause/prévention utile ou preuve nécessaire ne peut être supprimée uniquement pour gagner de la place.
+
+
+## 14 — FAB-REL-001 : chaîne de packaging/release
+`tag vX.Y.Z` → checkout → cohérence tag/plugin.json → tests `asset_gate.py` → copie de `skills/fab-copilot/SKILL.md` + `references/` dans staging → ZIP versionné → contrôle du ZIP → GitHub Release + asset ZIP. Le workflow utilise uniquement `GITHUB_TOKEN` avec `contents: write` et ne stocke aucun secret applicatif.

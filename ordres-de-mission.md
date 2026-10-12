@@ -59,3 +59,9 @@
 - **Commande :** lorsqu'un APK est livré dans un ZIP GitHub, le faire décompresser côté GitHub/CI dans le répertoire temporaire `temp/` et fournir directement l'`.apk`, afin d'éviter à Sol/Astra de télécharger/dézipper l'archive et d'éviter de saturer le téléphone de test.
 - **Conservation :** le ZIP peut rester comme artefact technique ; l'APK temporaire est nettoyable une fois inutile, sans perdre une version à préserver.
 - **Statut :** intégré à FAB Copilot ; autorisation explicite de Fab donnée pour merge `main` + Release.
+
+### FAB-REL-001 — Automatiser le ZIP et la GitHub Release
+- **Demandeur / date :** Fab, 12/10/2026.
+- **Commande :** faire le nécessaire pour que FAB Copilot puisse fabriquer et publier sa skill sans dépendre de la capacité du connecteur à uploader un ZIP binaire.
+- **Produit :** workflow GitHub Actions de test, packaging ZIP et GitHub Release sur tag versionné.
+- **Statut :** en cours jusqu'à preuve d'une Release v0.4.0 et de son ZIP.
