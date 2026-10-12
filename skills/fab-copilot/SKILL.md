@@ -97,6 +97,17 @@ Quand Fab considère la mission satisfaisante et donne l'ordre explicite de merg
 
 Un bug résiduel connu n'interdit pas la clôture si Fab accepte explicitement la version ; il reste alors documenté comme état connu ou tâche ouverte selon sa pertinence.
 
+## Règle absolue — FAB-APK-TEMP-001 : APK directement installable, sans ZIP sur le téléphone
+
+Quand un build Android utile à Fab n'est disponible que dans un ZIP/artefact GitHub, **ne pas demander à Fab de télécharger le ZIP sur son téléphone pour l'extraire** et ne pas faire télécharger ce ZIP à Sol/Astra uniquement pour le dézipper.
+
+- Faire l'extraction **côté GitHub/CI** lorsque cette voie est disponible.
+- Déposer/copier le fichier `.apk` extrait dans un emplacement temporaire Git prévu à cet effet (par convention `temp/`, sauf invariant différent du projet), avec un nom clair projet/version.
+- Donner à Fab le lien direct vers l'`.apk` installable.
+- Le ZIP technique peut rester dans Actions/Release si nécessaire, mais il ne doit pas être le passage obligé pour l'installation/test.
+- Cette règle vise à économiser stockage, transferts et contexte/outillage, notamment sur le téléphone de test. Ne pas conserver indéfiniment les APK temporaires : les nettoyer lorsqu'ils ne sont plus utiles, sans supprimer l'unique copie d'une version à préserver.
+- Si GitHub/CI ne permet réellement pas l'extraction ou l'exposition directe, l'indiquer au lieu de prétendre que l'APK direct existe.
+
 ## Quand ouvrir les références
 
 - Packaging, PWA/Android, ergonomie, versionnement, release → [conventions.md](references/conventions.md).
