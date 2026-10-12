@@ -1,0 +1,62 @@
+name: Release FAB Copilot skill
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  package-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout tagged sources
+        uses: actions/checkout@v4
+
+      - name: Validate tag against plugin version
+        shell: bash
+        run: |
+          set -euo pipefail
+          VERSION="$(python -c 'import json; print(json.load(open("plugin.json", encoding="utf-8"))["version"])')"
+          TAG="${GITHUB_REF_NAME}"
+          test "$TAG" = "v$VERSION" || { echo "Tag $TAG != plugin version v$VERSION"; exit 1; }
+          echo "VERSION=$VERSION" >> "$GITHUB_ENV"
+
+      - name: Run tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Build importable skill ZIP
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf build dist-release
+          mkdir -p build/fab-copilot/references dist-release
+          cp skills/fab-copilot/SKILL.md build/fab-copilot/SKILL.md
+          cp -R skills/fab-copilot/references/. build/fab-copilot/references/
+          (
+            cd build/fab-copilot
+            zip -r "../../dist-release/fab-copilot-v${VERSION}-skill.zip" SKILL.md references
+          )
+
+      - name: Verify ZIP layout and current rules
+        shell: bash
+        run: |
+          set -euo pipefail
+          ZIP="dist-release/fab-copilot-v${VERSION}-skill.zip"
+          unzip -l "$ZIP"
+          unzip -p "$ZIP" SKILL.md | grep -q "FAB-APK-TEMP-001"
+          unzip -p "$ZIP" SKILL.md | grep -q "FAB-REL-001"
+          unzip -l "$ZIP" | grep -q "references/conventions.md"
+          sha256sum "$ZIP" | tee "dist-release/fab-copilot-v${VERSION}-skill.zip.sha256"
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: FAB Copilot v${{ env.VERSION }}
+          generate_release_notes: true
+          files: |
+            dist-release/fab-copilot-v${{ env.VERSION }}-skill.zip
+            dist-release/fab-copilot-v${{ env.VERSION }}-skill.zip.sha256
