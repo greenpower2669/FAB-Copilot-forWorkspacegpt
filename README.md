@@ -1,4 +1,4 @@
-# FAB Copilot — collaboration légère (v0.3)
+# FAB Copilot — collaboration légère (v0.4)
 
 Un **profil de développement pour agents** inspiré du format de skills utilisé notamment par [Superpowers](https://github.com/obra/superpowers), mais **sans sa chaîne de procédures obligatoire**.
 
@@ -56,7 +56,7 @@ Chaque version prête à distribuer passe par une GitHub Release vérifiée, ave
 
 Si un bug résiste et que les essais ne font presque plus progresser la compréhension : revenir à la référence stable, augmenter le reporting ciblé, contourner temporairement un bloc à la fois et comparer le même scénario avant de conclure. Chaque test est réversible et documenté ; un soupçon n'est pas une preuve. La règle détaillée vit dans [la skill](skills/fab-copilot/SKILL.md).
 
-**Attention à l'installation :** la source Git contient cette méthode, mais le ZIP `dist/fab-copilot-v0.3.0-skill.zip` ci-dessous est l'ancienne archive et ne la contient pas. Une copie déjà installée dans ChatGPT ne se recharge pas par un simple commit : un ZIP actualisé doit être produit et réimporté.
+**Installation :** à partir de v0.4.0, le ZIP de la skill est construit automatiquement par GitHub Actions et publié dans la GitHub Release lors du push du tag de version.
 
 ## Évolution
 
@@ -64,6 +64,6 @@ Motivations stables ; règles conditionnelles et seuils contextuels. Les mesures
 
 Licence MIT pour le code original ici. Superpowers est distinct, cité comme inspiration, pas embarqué.
 
-## ZIP de réinstallation — 0.3.0
+## ZIP de réinstallation — 0.4.0
 
-[**Télécharger la skill prête à importer**](https://github.com/greenpower2669/FAB-Copilot-forWorkspacegpt/raw/refs/heads/main/dist/fab-copilot-v0.3.0-skill.zip) : `SKILL.md` à la racine du ZIP, avec `references/`. Dans ChatGPT, réimporter la skill depuis le ZIP pour remplacer l'ancienne copie ; une mise à jour du dépôt Git seule ne met pas nécessairement à jour une skill déjà installée.
+Le workflow `release-skill.yml` fabrique `fab-copilot-v0.4.0-skill.zip` avec `SKILL.md` à la racine et `references/`, vérifie son contenu puis l'attache à la GitHub Release du tag `v0.4.0`.
