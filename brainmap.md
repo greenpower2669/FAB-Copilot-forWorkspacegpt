@@ -248,3 +248,7 @@ Le workflow ne dépend plus d'une action externe de création de tag. `release-v
 
 ### 14.2 Checksum de Release
 Le fichier `.sha256` est produit **depuis `dist-release/`** et référence uniquement le basename du ZIP. Ainsi, après téléchargement des deux assets dans un dossier vierge, `sha256sum -c` fonctionne sans dépendre du chemin de build du runner.
+
+
+### 14.3 Marqueur de vérification publié
+Après re-téléchargement de la Release, validation du SHA-256 et présence des règles attendues dans le ZIP, le workflow pousse `verified-vX.Y.Z`. Ce tag technique est la preuve observable de fin de chaîne ; il n'est jamais créé avant les contrôles.

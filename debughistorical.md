@@ -16,3 +16,9 @@
 - **Cause confirmée par lecture du workflow :** chemin enregistré dans le fichier checksum, et non le hash lui-même.
 - **Correction :** générer le checksum depuis l'intérieur de `dist-release/` afin qu'il référence seulement le nom du ZIP ; la vérification téléchargée devient portable.
 - **Prévention :** toute preuve de Release doit être vérifiée dans un répertoire vierge, comme un utilisateur externe.
+
+
+## FAB-HIST-008 — Preuve de Release indépendante de la branche
+- **Date :** 12/10/2026.
+- **Amélioration :** la validation finale ne dépend plus de l'écriture d'un fichier de preuve sur `main`, qui peut être refusée par une protection de branche.
+- **Preuve canonique :** après re-téléchargement et vérification du ZIP + SHA-256, le workflow pousse le tag technique `verified-vX.Y.Z`. Son absence signifie que la validation post-publication n'est pas démontrée.
