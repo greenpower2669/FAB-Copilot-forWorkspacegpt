@@ -44,3 +44,8 @@ Une version prête à partager doit être publiée par GitHub Release et accompa
 ## Règles durables et mesures temporaires
 
 Toujours conserver la raison de la règle. Par exemple « éviter les gros Base64 via JSON » n'est pertinent que si l'API **impose** ce transport et si le volume/risque le justifie. Documenter temporairement les incidents, réévaluer les seuils et retirer les contournements devenus inutiles.
+
+
+## Release de la skill FAB Copilot
+
+Dans le dépôt FAB Copilot, `plugin.json` porte la version fonctionnelle et `release-version.txt` porte la demande explicite de publication. Les deux doivent être identiques. Le changement de `release-version.txt` sur `main` déclenche `.github/workflows/release-skill.yml`, qui exécute les tests, construit et vérifie le ZIP, calcule son SHA-256, crée le tag si nécessaire puis publie la GitHub Release. Ne jamais remplacer ce flux par un ancien ZIP manuel lorsqu'il est disponible.
