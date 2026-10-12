@@ -56,7 +56,7 @@ jobs:
           unzip -p "$ZIP" SKILL.md | grep -q "FAB-APK-TEMP-001"
           unzip -p "$ZIP" SKILL.md | grep -q "FAB-REL-001"
           unzip -l "$ZIP" | grep -q "references/conventions.md"
-          sha256sum "$ZIP" | tee "dist-release/fab-copilot-v${VERSION}-skill.zip.sha256"
+          (cd dist-release && sha256sum "fab-copilot-v${VERSION}-skill.zip" | tee "fab-copilot-v${VERSION}-skill.zip.sha256")
 
       - name: Create or update GitHub Release
         shell: bash
