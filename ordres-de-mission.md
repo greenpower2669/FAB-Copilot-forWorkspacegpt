@@ -24,4 +24,4 @@
 - **Demandeur / date :** Fab, 12/10/2026.
 - **Commande :** intégrer les nouvelles règles, relire l'ensemble, merger et produire une vraie Release avec ZIP installable sans dépendre d'une création manuelle de tag.
 - **Produit attendu :** Release GitHub `v0.4.0` ; ZIP `fab-copilot-v0.4.0-skill.zip` vérifié, contenant notamment FAB-DEBUG-001, FAB-MEM-004, FAB-IMMUTABLE-001, FAB-CLOSE-001, FAB-APK-TEMP-001 et FAB-REL-001.
-- **Statut :** **En cours** jusqu'à preuve du workflow vert, de la Release et du ZIP ; ensuite **Livré, à valider** jusqu'à réimport/validation par Fab.
+- **Statut :** **Livré, à valider**. Les refs `v0.4.0` et `verified-v0.4.0` sont résolues ; le tag de preuve n'est créé qu'après re-téléchargement du ZIP publié, validation du SHA-256 et contrôle des règles attendues. Reste uniquement la réimportation/validation de la skill par Fab.
