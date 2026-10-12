@@ -53,3 +53,9 @@
 - **Secrets :** ne mémoriser que les noms/rôles canoniques ; jamais les valeurs. `ANDROID_UPLOAD_KEYSTORE_BASE64` représente la sauvegarde chiffrée du keystore selon la procédure du projet ; le `.pem` reste un certificat public.
 - **Clôture :** les cinq fichiers actifs doivent refléter la version réellement livrée ; le vieux détail utile est déplacé vers `sauvegarde.md`, avec pointeurs courts depuis l'actif lorsque nécessaire.
 - **Statut :** intégré sur branche dédiée FAB Copilot ; merge `main` et reconditionnement de la skill non effectués sans ordre explicite de Fab.
+
+### FAB-APK-TEMP-001 — Livraison directe des APK extraits
+- **Demandeur / date :** Fab, 12/10/2026.
+- **Commande :** lorsqu'un APK est livré dans un ZIP GitHub, le faire décompresser côté GitHub/CI dans le répertoire temporaire `temp/` et fournir directement l'`.apk`, afin d'éviter à Sol/Astra de télécharger/dézipper l'archive et d'éviter de saturer le téléphone de test.
+- **Conservation :** le ZIP peut rester comme artefact technique ; l'APK temporaire est nettoyable une fois inutile, sans perdre une version à préserver.
+- **Statut :** intégré à FAB Copilot ; autorisation explicite de Fab donnée pour merge `main` + Release.
