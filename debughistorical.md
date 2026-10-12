@@ -50,3 +50,9 @@ Aucun incident du code `asset_gate.py` n'a été identifié ni corrigé pendant 
 - **Correction :** FAB-MEM-004 distingue inspection/indexation obligatoire et chargement détaillé ciblé. Ordre canonique du quartet : `todo.md` → `brain.md` → `brainmap.md` → `debughistorical.md`; `ordres-de-mission.md` reste séparé et prioritaire.
 - **Délestage :** ancien contenu expiré peut être transféré sans perte dans `sauvegarde.md`, marqué archive froide / ne pas lire par défaut, avec provenance et identifiants permettant sa récupération.
 - **Prévention :** ne jamais confondre optimisation du contexte avec suppression de connaissance ; conserver tâches ouvertes, contrat courant, architecture encore vraie, causes/préventions utiles et preuves nécessaires.
+
+
+## FAB-HIST-006 — Connecteur sans création directe de Release (12/10/2026)
+- **Observation :** le connecteur GitHub permettait les commits/PR/merge mais n'exposait pas d'action de création de Release avec asset binaire.
+- **Correction de méthode :** FAB-REL-001 déplace le packaging et la publication dans GitHub Actions, exécutés par GitHub avec `GITHUB_TOKEN` et permission `contents: write`.
+- **Preuve attendue :** run vert + Release v0.4.0 + ZIP attaché ; jusqu'à cette preuve, ne pas déclarer la Release produite.
