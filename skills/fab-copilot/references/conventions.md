@@ -33,6 +33,10 @@ Les quatre fichiers `brain.md`, `brainmap.md` (**complète, hiérarchisée, sans
 - Si tout n'est pas fait en une session, mettre à jour le `todo.md` **du dépôt travaillé** avec : fait / reste / blocages / dernier commit vérifié / prochain test. Le `todo.md` de FAB Copilot suit seulement l'évolution de cette skill.
 - Éviter de recommencer des uploads ou builds sans avoir vérifié ce qui a réellement abouti.
 
+## APK de test livré sans extraction sur téléphone — FAB-APK-TEMP-001
+
+Lorsqu'un APK est enfermé dans un ZIP/artefact GitHub, privilégier une extraction côté GitHub/CI et placer l'APK directement dans `temp/` (ou le répertoire temporaire canonique du projet). Fab doit recevoir un APK directement installable, pas devoir stocker puis décompresser un ZIP sur son téléphone. Sol/Astra ne doivent pas télécharger un ZIP uniquement pour cette extraction si GitHub/CI peut la faire. Nettoyer ensuite les copies temporaires devenues inutiles.
+
 ## Distribution vérifiée
 
 Une version prête à partager doit être publiée par GitHub Release et accompagnée des liens directs vers ses binaires, notamment APK et AAB adaptés au périmètre, plutôt que d'un ZIP intermédiaire ou d'artefacts Actions temporaires. Si le canal de publication manque, noter le blocage dans `todo.md` et ne pas prétendre que la release existe.
