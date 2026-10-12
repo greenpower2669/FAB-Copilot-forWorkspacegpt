@@ -244,3 +244,7 @@ flowchart TD
 
 ### 14.1 Frontière de déclenchement
 Le workflow ne dépend plus d'une action externe de création de tag. `release-version.txt` est un petit fichier contrôlable par Git ; sa modification constitue la demande de publication. Le workflow refuse une divergence avec `plugin.json`. Cette frontière rend la Release pilotable par les mêmes capacités Git que le reste du dépôt.
+
+
+### 14.2 Checksum de Release
+Le fichier `.sha256` est produit **depuis `dist-release/`** et référence uniquement le basename du ZIP. Ainsi, après téléchargement des deux assets dans un dossier vierge, `sha256sum -c` fonctionne sans dépendre du chemin de build du runner.
