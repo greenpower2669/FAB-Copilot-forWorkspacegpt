@@ -1,79 +1,13 @@
 # ✅ todo.md — FAB Copilot, état vivant
-> Document canonique ; reprend intégralement les tâches de l'ancien TODO.md sans suppression.
-> 2026-09-21 : adoption du protocole FAB-MEM-001.
+> Tâches réellement ouvertes après nettoyage FAB-CLOSE-001. Historique antérieur : `sauvegarde.md`.
 
-## Adoption des quatre mémoires — 2026-09-21
-- [x] Définir FAB-MEM-001, la synchronisation **pendant** les changements et le même commit.
-- [x] Définir les rôles brain / brainmap **exhaustif** / debughistorical / todo.
-- [x] Consigner les deux clarifications de compréhension sans inventer de bug de code.
-- [x] Ajouter la documentation de présentation et relier les points d'entrée de la skill.
-- [ ] Exécuter localement les tests existants de `asset_gate.py` ; aucune exécution n'est attestée par ce seul changement de documentation.
-- [ ] Vérifier import/activation effectifs de la nouvelle version de la skill dans ChatGPT Work.
-- [ ] Publier v0.4.0 via le nouveau workflow de Release et vérifier le ZIP/Release. **Le workflow doit être réellement exécuté avant de cocher.**
-- [ ] Étudier plus tard, si utile, un contrôle automatique de cohérence (sans prétendre qu'il existe aujourd'hui).
-- [ ] Valider le protocole sur le prochain projet consommateur avec ses quatre propres fichiers.
+## Release v0.4.0
+- [x] Intégrer FAB-IMMUTABLE-001, FAB-ANDROID-SIGN-001, FAB-CLOSE-001, FAB-APK-TEMP-001 et FAB-REL-001.
+- [x] Remplacer la dépendance à un tag manuel par `release-version.txt` + création du tag dans GitHub Actions.
+- [x] Archiver les anciennes missions/tâches/incidents dans `sauvegarde.md` et nettoyer les vues actives.
+- [ ] Merger sur `main` et obtenir un workflow vert.
+- [ ] Vérifier la Release `v0.4.0`, le ZIP et son SHA-256.
+- [ ] Faire confirmer par Fab la réimportation/activation de la skill v0.4.0 dans ChatGPT.
 
-## Historique des tâches préexistantes (ancien TODO.md, conservé)
-
-## V0.1 — implémenté
-- [x] Dépôt indépendant ; pas de fork ni import de Superpowers.
-- [x] Skill au format `SKILL.md` avec frontmatter et déclencheurs.
-- [x] Manifeste portable `plugin.json` pour empaqueter la skill en plugin installable.
-- [x] Motivation et arbitrage contextuel : autonomie, relais humain **avant** les transferts risqués, exceptions légères.
-- [x] Conventions : APK + AAB si pertinent, nom du projet/version, icône, architecture PWA/native selon contexte.
-- [x] Continuité : préserver stable, `TODO.md` dans chaque dépôt travaillé, vérifier commits et builds.
-- [x] Diagnostic local des assets (métadonnées uniquement) et tests unitaires.
-
-## Marketplace personnelle — 2026-09-19
-- [x] Ajouter `.agents/plugins/marketplace.json` sur `main` : entrée `fab-copilot` pointant vers le plugin original à la racine du dépôt, sans dupliquer la skill ni ajouter de serveur MCP. Premier commit confirmé : `e8963826c52b3caf615b6372667241bbcb0ef10b`.
-- [x] Relire sur GitHub le catalogue, `plugin.json` et `skills/fab-copilot/SKILL.md` après publication.
-- [ ] Importer la marketplace dans ChatGPT Work (si disponible : Workspace settings > Plugins > Add > Import marketplace, source = URL du dépôt, Path vide, branche `main`), puis vérifier le rapport d'import.
-- [ ] Installer et activer `fab-copilot` dans une nouvelle session et confirmer que la skill est effectivement chargée. Le catalogue GitHub ne réalise pas l'installation à lui seul.
-
-## À vérifier dans les environnements cibles
-- [ ] Exécuter les tests de `asset_gate.py` et vérifier une sortie réelle.
-- [ ] Tester l'import du plugin dans ChatGPT Work via `@plugin-creator`, l'installation et son activation dans une nouvelle session (GitHub seul ne l'installe pas).
-- [ ] Essayer avec un petit PNG, un lot important JSON/Base64 et un canal binaire dans un projet de test.
-- [ ] Confirmer que le relais peut se faire dans le workspace réel (accès Git, chemins et droits).
-- [ ] Ajuster les seuils indicatifs en fonction des limites et incidents réellement observés.
-
-## Évolutions possibles, non exigées
-- [ ] Rendre la configuration JSON directement exploitable par le diagnostic si cela devient utile.
-- [ ] Ajouter un modèle de `TODO.md` pour les projets consommateurs si Fabrice le souhaite.
-- [ ] Documenter l'installation exacte selon le client dès que ses capacités seront confirmées.
-
-## Règle de maintenance
-
-Chaque nouveau contournement doit décrire **cause, condition d'application, alternative, condition de retrait**. Ne pas ajouter un protocole obligatoire à toute session.
-
-
-
-## FAB-MISSION-001 — Implémentation du registre séparé (23/09/2026)
-- [x] [AGENT] Inscrire la commande de Fab dans `ordres-de-mission.md`, distinct du plan technique `todo.md` ; maintenir les quatre mémoires synchronisées avec la skill et le protocole.
-- [x] [AGENT] Clarifier que les rapports de bug vont dans `debughistorical.md`, les correctifs/action techniques ici, et que `topo.md` est facultatif.
-- [ ] [AGENT] Confirmer l'activation de cette version de la skill dans les clients qui utilisaient la précédente ; Git `main` ne recharge pas une copie déjà installée.
-- [ ] [AGENT] Contrôler le premier projet consommateur et vérifier l'exhaustivité de ses missions utilisateur reconstruites ; ne jamais présenter des cases historiques comme des ordres de Fab.
-
-## Distribution skill ZIP — 0.3.0 (23/09/2026)
-- [x] [AGENT] Construire et enregistrer `dist/fab-copilot-v0.3.0-skill.zip` depuis la version exacte de `skills/` du commit `c97e85221cf2388f44783f41e1830122dd23d222` ; `SKILL.md` à la racine de l'archive + références complètes.
-- [ ] [AGENT] Faire confirmer l'import/remplacement dans ChatGPT par Fab ; le seul ZIP publié ne prouve pas une skill installée.
-
-## FAB-DEBUG-001 — Nouvelle méthode de Fab (25/09/2026)
-- [x] Intégrer la stratégie conditionnelle « petit pas + reporting + isolation d'un bloc à la fois » aux sources de la skill, au contrat et à la cartographie, avec garde-fous et historique distinct des bugs avérés.
-- [x] Garder le déclencheur contextuel : ne pas imposer une longue procédure à chaque petit bug, ne pas transformer une hypothèse en cause démontrée.
-- [ ] Vérifier que le ZIP v0.4.0 produit par FAB-REL-001 contient bien FAB-DEBUG-001.
-- [ ] Faire confirmer le remplacement/la recharge de la skill déjà installée par Fab ; modifier main ne met pas à jour le client.
-- [ ] Lors d'un prochain débogage bloqué, éprouver sur un même scénario la boucle reporting → neutralisation unitaire → réactivation → comparaison ; consigner les résultats réels, sans prétendre l'avoir déjà validée sur appareil.
-
-## FAB-MEM-004 — Délestage contextuel (28/09/2026)
-- [x] [FAB] Fixer l'ordre canonique des quatre mémoires actives : `todo.md` → `brain.md` → `brainmap.md` → `debughistorical.md` ; `ordres-de-mission.md` reste séparé et prioritaire pour les demandes utilisateur.
-- [x] [AGENT] Définir `sauvegarde.md` comme archive froide facultative, marquée « EXPIRÉ — NE PAS LIRE PAR DÉFAUT », sans perte de provenance ni d'identifiants.
-- [x] [AGENT] Remplacer la relecture exhaustive systématique par lecture des index/états utiles puis chargement des seules sections pertinentes, sauf audit global/refonte/dépendance incertaine.
-- [ ] [AGENT] Appliquer FAB-MEM-004 au prochain projet où le poids des mémoires devient matériel, puis vérifier qu'aucune information active n'a été perdue.
-- [ ] [AGENT] Vérifier que le ZIP v0.4.0 produit par FAB-REL-001 contient FAB-MEM-004 et faire confirmer son rechargement.
-
-
-## FAB-REL-001 — Release automatisée v0.4.0 (12/10/2026)
-- [x] Ajouter un workflow de packaging/release déclenché par tag `v*`.
-- [x] Faire vérifier version, tests et contenu du ZIP avant publication.
-- [ ] Merger le workflow sur `main`, déclencher la publication v0.4.0 et vérifier la Release/asset.
+## Validation future utile
+- [ ] Lors d'un prochain projet consommateur, vérifier l'application réelle de FAB-MEM-004, FAB-APK-TEMP-001 et du registre IMMUTABLE sans perte d'information.
