@@ -3,7 +3,7 @@ name: fab-copilot
 description: "Utiliser pendant le développement, le packaging ou les transferts de projets de Fabrice pour garder une autonomie légère, anticiper les risques, appliquer APK/AAB/icône/nommage et passer la main avant les transferts d'assets réellement fragiles."
 ---
 
-# FAB Copilot — skill légère v0.3
+# FAB Copilot — skill légère v0.4
 
 ## Intention
 
@@ -107,6 +107,10 @@ Quand un build Android utile à Fab n'est disponible que dans un ZIP/artefact Gi
 - Le ZIP technique peut rester dans Actions/Release si nécessaire, mais il ne doit pas être le passage obligé pour l'installation/test.
 - Cette règle vise à économiser stockage, transferts et contexte/outillage, notamment sur le téléphone de test. Ne pas conserver indéfiniment les APK temporaires : les nettoyer lorsqu'ils ne sont plus utiles, sans supprimer l'unique copie d'une version à préserver.
 - Si GitHub/CI ne permet réellement pas l'extraction ou l'exposition directe, l'indiquer au lieu de prétendre que l'APK direct existe.
+
+## FAB-REL-001 — Packaging/release autonome de la skill
+
+Le dépôt FAB Copilot possède un workflow GitHub Actions `.github/workflows/release-skill.yml`. Un tag `vX.Y.Z` cohérent avec `plugin.json` déclenche : contrôle de version, tests Python, construction du ZIP importable avec `SKILL.md` à sa racine et `references/`, contrôle du contenu, puis création/mise à jour de la GitHub Release avec le ZIP comme asset. La permission `contents: write` est limitée au job de release. Aucun secret supplémentaire n'est requis : le workflow utilise `GITHUB_TOKEN`.
 
 ## Quand ouvrir les références
 
